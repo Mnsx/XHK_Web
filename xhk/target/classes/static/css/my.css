@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    max-width: 780px;
+    min-width: 350px;
+    margin: 0 auto;
+    width: 10rem;
+}
+
+@media screen and (min-width:780px) {
+    html {
+        font-size: 78px !important;
+    }
+}
+
+.selected i {
+    color: cornflowerblue !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.all {
+    height: 19.6667rem;
+    width: 10rem;
+    background-color: rgb(232, 233, 231);
+}
+
+/*模态框开始*/
+.modal-box {
+    position: fixed;
+    top: 6rem;
+    left: 2rem;
+    height: 6.8462rem;
+    width: 5.9rem;
+    background: #FFFFFF;
+    z-index: 999;
+    border-radius: 15px;
+}
+
+.modal-box i {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 30px;
+}
+
+.modal-box .rcode_text {
+    margin-top: 20px;
+    font-size: .7846rem;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.modal-box input {
+    position: absolute;
+    top: 3.1282rem;
+    left: .7rem;
+    width: 4.2821rem;
+    height: .9846rem;
+    border: 2px solid #686666;
+    letter-spacing: 4px;
+}
+
+.modal-box button {
+    position: absolute;
+    width: 2.4rem;
+    height: .5487rem;
+    top: 5.4564rem;
+    left: 1.492rem;
+    font-size: .3564rem;
+}
+
+.one {
+    position: fixed;
+    height: 1.385rem;
+    width: 10rem;
+    background-color: #4e5174;
+    z-index: 999;
+}
+
+.ge {
+    height: 1.3462rem;
+    width: 100%;
+    background-color: #4e5174;
+}
+
+.d1 {
+    position: fixed;
+    color: white;
+    padding-left: .4246rem;
+    padding-top: .3564rem;
+    font-size: .5128rem;
+}
+
+.agent-img {
+    height: .8333rem;
+    border-radius: 50%;
+    margin-left: .2923rem;
+    margin-top: .5128rem;
+}
+
+.agent-img img {
+    width: 1.8256rem;
+    height: 1.8256rem;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.photo {
+    display: flex;
+    width: 4.7436rem;
+    height: 2.8872rem;
+    justify-content: space-between;
+    /* background-color: pink; */
+}
+
+.user {
+    height: 2.4821rem;
+    margin-top: .2946rem;
+}
+
+.user p {
+    display: block;
+    margin-top: .2564rem;
+}
+
+.user:nth-child(2) {
+    font-size: .5846rem;
+    color: #686666;
+}
+
+.two {
+    display: flex;
+    height: 2.9821rem;
+    width: 100%;
+}
+
+
+
+
+.containerFirst {
+    display: flex;
+    margin-left: 1.177rem;
+    margin-top: .6692rem;
+}
+
+.containerFirst .money {
+    height: .641rem;
+}
+
+.containerFirst .money img {
+    width: 1.5385rem;
+    height: 1.5385rem;
+}
+
+.containerFirst .money div {
+    margin-top: 5px;
+}
+
+.containerFirst h1 {
+    font-size: .1282rem;
+    font-weight: 550;
+    letter-spacing: .0256rem;
+}
+
+
+/*余额*/
+
+.containerFirst .yu-e {
+    display: flex;
+    margin-top: 15px;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.containerFirst .yu-e h1 {
+    color: #4e5174;
+    font-size: .6205rem;
+    font-weight: 600;
+}
+
+
+.three {
+    border-radius: .2282rem;
+    background-color: rgb(255, 255, 255);
+    padding: .1282rem 0;
+    margin: .3564rem .2564rem .3564rem;
+    opacity: .8;
+    box-shadow: 2px 2px 2px 2px rgba(162, 164, 175, 0.6);
+}
+.three .first {
+    line-height:.8rem ;
+    height: .8rem;
+    display: flex;
+    margin: .2564rem 0;
+    position: relative;
+}
+
+/* .three .first::after {
+    content: "";
+    position: absolute;
+    top: .238rem;
+    right: 50px;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    transform: rotate(-45deg);
+} */
+
+.first i:nth-child(1) {
+    width: 0.4487rem;
+    height: 0.4487rem;
+    font-size: .6487rem;
+    margin: .0128rem 0.8rem 0.6846rem .1923rem;
+}
+
+.icon-jiantouyou{
+    position:absolute ;
+    font-size: .5rem;
+    text-align: center;
+    right:  20px;
+    color:#b9b5b5;
+
+}
+.three h1 {
+    font-size: .4564rem;
+    font-weight: 550;
+    letter-spacing: 3px;
+    color: #4e5174;
+}
+
+
+
+
+
+
+/* footer开始  */
+.footer {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    width: 10rem
+        /* 780/78 */
+    ;
+    height: 1.564rem
+        /* 122/78 */
+    ;
+    justify-content: space-around;
+    padding-bottom: 1.8rem;
+    background: white;
+    z-index: 999;
+}
+
+.footer h1 {
+    font-size: 0.256rem
+        /* 20/78 */
+    ;
+}
+
+.footer span {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer i {
+    font-size: 1.026rem
+        /* 80/78 */
+    ;
+}
+
+.footer .news {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.128rem
+        /* 10/78 */
+    ;
+    /*margin-left: 50px;*/
+}
+
+.footer .iFirst {
+    display: flex;
+    flex-direction: column;
+    /*margin-top:0px;*/
+    /*margin-left: 100px;*/
+}
+
+.footer .iFirst i {
+    position: relative;
+    margin-top: 0.128rem
+        /* 10/78 */
+    ;
+}
+
+.footer .my {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.128rem
+        /* 10/78 */
+    ;
+    /*margin-left: 90px;*/
+}
+
+/*footer结束*/
+
+
+/* 遮罩层样式 */
+.cover {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #000;
+    opacity: 0.3;
+}

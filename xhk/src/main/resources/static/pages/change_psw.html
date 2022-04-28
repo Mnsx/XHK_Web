@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../css/changepassword.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3177205_zo49idqeoes.css">
+    <script src="../js/flexible.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <title>修改密码</title>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 头部开始 -->
+        <div class="header">
+            <div class="return" onclick="location.href='/xhk/personalInfo.html'"></div>
+            <h1 class="change">修改密码</h1>
+            <a class="findpsd" href="tel:13648061898" style="text-decoration:none;color:#fff;">找回密码</a>
+        </div>
+        <!-- 头部结束 -->
+
+        <!-- 中间部分修改密码开始 -->
+        <div class="continer">
+            <div class="continer_box">
+                <div>
+                    <h1 class="hfirst">请输入当前密码</h1>
+                </div>
+                <div class="repassword">
+                    <h1 class="changepassword" >密码:</h1>
+                    <input type="password" v-model="password" placeholder="请输入">
+                </div>
+                <div class="confirm">
+                    <!--                <a href="#">忘记密码</a>-->
+                    <button @click="turnPage()">确认</button>
+                    <!--                <button>找回密码</button>-->
+                </div>
+            </div>
+
+        </div>
+        <!-- 中间部分修改密码结束 -->
+
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+            data:{
+              password: '',
+            },
+            methods: {
+                turnPage() {
+                    let curId = this.getCookie('curId');
+                    let json = {'curId': curId, 'password': this.password}
+                    axios.put("http://localhost/xhk/user/psd", json).then((res) => {
+                        if (res.data) {
+                            location.href = '/xhk/confirmpassword.html';
+                        } else {
+                            alert('密码错误🤬');
+                            location.reload();
+                        }
+                    })
+                },
+                //通过名字获取cookie
+                getCookie(cname) {
+                    let cookies = document.cookie.split(";");
+                    let cookName = []
+                    let cook = [];
+                    for (let i = 0; i < cookies.length; ++i) {
+                        let cookie = cookies[i].split("=");
+                        cookName[i] = cookie[0];
+                        cook[i] = cookie[1];
+                    }
+                    for (let i = 0; i < cookName.length; ++i) {
+                        if (cookName[i] === cname) {
+                            return cook[i];
+                        }
+                    }
+                    return '';
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

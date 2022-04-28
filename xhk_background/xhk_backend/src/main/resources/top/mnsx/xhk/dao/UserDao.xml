@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mnsx.xhk.dao.UserDao">
+    <resultMap id="UserEntityMap" type="top.mnsx.xhk.entity.User">
+        <id property="uid" column="uid"/>
+        <result property="modifiedUser" column="modified_user"/>
+        <result property="modifiedTime" column="modified_time"/>
+        <result property="createdUser" column="created_user"/>
+        <result property="createdTime" column="created_time"/>
+    </resultMap>
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="uid">
+        INSERT INTO t_user
+        (username, password, code, phone, created_user, created_time, modified_user, modified_time)
+        VALUES (#{user.username}, #{user.password}, #{user.code}, #{user.phone}, #{user.createdUser}, #{user.createdTime}, #{user.modifiedUser}, #{user.modifiedTime})
+    </insert>
+
+    <select id="findUserByUsername" resultMap="UserEntityMap">
+        SELECT * FROM t_user
+        WHERE username = #{username} AND deleted = 0;
+    </select>
+</mapper>
+ 

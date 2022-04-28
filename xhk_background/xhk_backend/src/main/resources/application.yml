@@ -1,0 +1,10 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  profiles:
+    # 多环境开发
+    active: dev
+  banner:
+    # banner路径
+    location: classpath:static/banner.txt

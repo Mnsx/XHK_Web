@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/confirmpassword.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3177205_zo49idqeoes.css">
+    <script src="js/flexible.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+    <title>确定密码</title>
+</head>
+
+<body>
+<div id="root">
+    <!-- 头部开始 -->
+    <div class="header">
+        <div class="return" onclick="location.href='/xhk/changepassword.html'">
+        <h1 class="change">修改密码</h1>
+    </div>
+    <!-- 头部结束 -->
+
+    <!-- 修改新密码开始 -->
+    <div class="continer">
+        <div class="continer_box">
+            <div>
+                <h1 class="hfirst">设置新密码</h1>
+            </div>
+            <div class="repassword">
+                <h1 class="changepassword">新密码:</h1>
+                <input type="password" placeholder="请输入" v-model="password">
+            </div>
+            <div class="repassword">
+                <h1 class="changepassword">确认密码:</h1>
+                <input type="password" placeholder="请输入" v-model="rePassword">
+            </div>
+            <div class="confirm">
+                <!--                <input type="submit" value="确认">-->
+                <button @click="turnPage()">确认</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- 修改新密码结束 -->
+
+    <!-- 页脚 -->
+    <!-- <div class="footer">
+        <div class="news">
+            <i class="iconfont icon-xiaoxi"></i>
+            <span>
+                <h1>消息</h1>
+            </span>
+        </div>
+        <div class="iFirst selected">
+            <i class="iconfont icon-shouye1">
+                <span>
+                    <h1>首页</h1>
+                </span>
+            </i>
+        </div>
+        <div class="my">
+            <i class="iconfont icon-wode"></i>
+            <span>
+                <h1>我的</h1>
+            </span>
+        </div>
+    </div>-->
+        </div>
+</div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+            data:{
+                password: '',
+                rePassword: '',
+            },
+            methods: {
+                turnPage() {
+                    let curId = this.getCookie('curId');
+                    let json = {'curId': curId, 'password': this.password, 'rePassword': this.rePassword}
+                    // axios.put("http://localhost/xhk/user/change_psd", json).then((res) => {
+                    axios.put("http://mnsx.top/xhk/user/change_psd", json).then((res) => {
+                        if (res.data) {
+                            alert("操作成功！❤")
+                            location.href = '/xhk/changepassword.html';
+                        } else {
+                            alert(res.data + '🤬');
+                            location.reload();
+                        }
+                    })
+                },
+                //通过名字获取cookie
+                getCookie(cname) {
+                    let cookies = document.cookie.split(";");
+                    let cookName = []
+                    let cook = [];
+                    for (let i = 0; i < cookies.length; ++i) {
+                        let cookie = cookies[i].split("=");
+                        cookName[i] = cookie[0];
+                        cook[i] = cookie[1];
+                    }
+                    for (let i = 0; i < cookName.length; ++i) {
+                        if (cookName[i] === cname) {
+                            return cook[i];
+                        }
+                    }
+                    return '';
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

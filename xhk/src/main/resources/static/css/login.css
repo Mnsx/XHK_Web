@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* body {
+    /* background-image: url(".././img/background.jpg");
+    background-size: 100%   150%;
+    background-repeat: no-repeat; */
+
+
+/* opacity: 0.9; */
+
+body {
+    min-width: 320px;
+    max-width: 780px;
+    width: 10rem;
+    margin: 0 auto;
+    font-family: Arial, Helvetica;
+    background-color: #F2F2F2;
+}
+
+@media screen and (min-width:780px) {
+    html {
+        font-size: 78px !important;
+    }
+}
+
+
+/* @media screen and (min-width:320px) and (max-width:780px) {
+    html {
+        font-size: 32px !important;
+    }
+} */
+
+.pic img {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: block;
+    z-index: -100;
+    /* opacity: 0.9; */
+}
+
+.login {
+    width: 100%;
+    height: auto;
+    padding-top: 100px;
+}
+
+.login .login-content {
+    width: 100%;
+    margin-top: 20%;
+}
+
+.login .login-content .header h1 {
+    font-size: .7692rem;
+    text-align: center;
+    letter-spacing: .1923rem;
+    color: #5e606c;
+}
+
+.login .login-content .agent-name {
+    margin-top: .9615rem;
+    padding: 0 1.1538rem;
+}
+
+.login .login-content .agent-name .id {
+    position: relative;
+}
+
+.login .login-content .agent-name .id input {
+    height: 100%;
+    width: 100%;
+    font-size: .3846rem;
+    letter-spacing: .0641rem;
+    outline: none;
+    border: none;
+    /*border:2px solid rgb(93, 141, 238);*/
+    /*outline-color: rgba(101, 149, 250, 0.7);*/
+    padding: .3846rem 0 .1923rem 1.9231rem;
+    border-radius: .2564rem;
+    background: #e8f0fe;
+    -webkit-appearance: none;
+}
+
+.login .login-content .agent-name div i {
+    position: absolute;
+    left: .641rem;
+    bottom: .0641rem;
+    font-size: .7949rem;
+    color: #888787;
+}
+
+.login .login-content .agent-password {
+    position: relative;
+    margin-top: .9615rem;
+    padding: 0 1.1538rem;
+}
+
+.login .login-content .agent-password .pwd {
+    /*display: flex;*/
+    position: relative;
+    /*border-bottom: 5px solid #e9eaea;*/
+    /*padding:10px 0 10px 150px;*/
+}
+
+.login .login-content .agent-password .pwd input {
+    height: 100%;
+    width: 100%;
+    font-size: .3846rem;
+    letter-spacing: .0641rem;
+    outline: none;
+    border: none;
+    /*border: 2px solid rgb(61, 149, 234,0.5);*/
+    /*outline-color: rgba(121, 185, 245, 0.7);*/
+    /*padding:10px 0 ;*/
+    border-radius: .2564rem;
+    padding: .3846rem .0641rem .1923rem 1.9231rem;
+    background: #e8f0fe;
+    -webkit-appearance: none;
+}
+
+.login .login-content .agent-name div i {
+    position: absolute;
+    left: .641rem;
+    bottom: .0641rem;
+    border-radius: .2564rem;
+    -webkit-appearance: none;
+}
+
+.login .login-content .agent-password .icon-mima {
+    position: absolute;
+    left: .641rem;
+    bottom: .0641rem;
+    font-size: .7949rem;
+    color: #888787;
+}
+
+.login .login-content .agent-password .err_msg h1 {
+    position: absolute;
+    bottom: -0.7692rem;
+    left: 1.9231rem;
+    display: none;
+    font-size: .641rem;
+    font-weight: 400;
+    color: red;
+}
+
+.login .login-content .mg {
+    margin-top: .7692rem;
+}
+
+.login .login-content .mg .mg-child {
+    display: flex;
+    padding: .0962rem 0 .0962rem 1.4423rem;
+}
+
+.login .login-content .mg .mg-child .rember {
+    display: flex;
+    position: relative;
+}
+
+.login .login-content .mg .mg-child .rember input {
+    display: none;
+    /*position: absolute;*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+    /*top:5px;*/
+    /*background: rgba(92, 169, 246, 0.5);*/
+    /*outline-color: rgba(92, 169, 246);*/
+    /*border: rgba(92, 169, 246);*/
+}
+
+.login .login-content .mg .mg-child .rember .icon-fuxuankuang,
+.login .login-content .mg .mg-child .rember .icon-duoxuankuangxuanzhong {
+    position: absolute;
+    font-size: .4808rem;
+    top: .0641rem;
+}
+
+.login .login-content .mg .mg-child .rember .icon-fuxuankuang {
+    color: #fff;
+    font-weight: bold;
+}
+
+.login .login-content .mg .mg-child .rember .icon-duoxuankuangxuanzhong {
+    display: none;
+    color: rgb(79, 151, 218);
+}
+
+.login .login-content .mg .mg-child .rember div {
+    margin-left: .6731rem;
+    padding-top: .0481rem;
+}
+
+.login .login-content .mg .mg-child .rember h1 {
+    font-size: .359rem;
+    font-weight: 500;
+    letter-spacing: .0256rem;
+    color: #fff;
+}
+
+.login .login-content .mg .mg-child .register {
+    margin-left: 1.5385rem;
+}
+
+.login .login-content .mg .mg-child .register a {
+    text-decoration: none;
+}
+
+.login .login-content .mg .mg-child .register h1 {
+    font-size: .359rem;
+    font-weight: 500;
+    letter-spacing: .0256rem;
+    color: #fff;
+}
+
+input::-webkit-input-placeholder {
+    color: #5e606c
+}
+
+.login .login-content .login-btn {
+    width: 80%;
+    margin: .641rem auto 0 auto;
+}
+
+.login .login-content .login-btn button {
+    width: 100%;
+    height: 1.0256rem;
+    border-radius: .641rem;
+    /*background: rgba(72, 143, 237, 0.8);*/
+    background: #3f85ff;
+    border: .0641rem solid rgb(72, 143, 237);
+    outline-color: rgb(10, 69, 161);
+}
+
+.login .login-content .login-btn button h1 {
+    font-size: .5rem;
+    font-weight: 530;
+    letter-spacing: .641rem;
+    color: #fff;
+}
+
+.login .login-content .reset {
+    margin-top: .641rem;
+    margin-left: 70%;
+}
+
+.login .login-content .reset h1 {
+    font-size: .3718rem;
+    font-weight: 500;
+    letter-spacing: .0256rems;
+    color: #fff;
+}

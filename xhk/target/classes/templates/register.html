@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href=".././static/css/register.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3234510_fxewia7znb.css">
+    <script type="text/javascript" src="js/register.js"></script>
+    <script type="text/javascript" src=".././static/js/register.js"></script>
+    <title>注册</title>
+
+</head>
+<body>
+    <div class="registerBody"  style="display: block">
+        <div class="header">
+            <h1>注册</h1>
+        </div>
+
+        <div class="register-img">
+            <img src="img/register.png" alt="">
+            <img src=".././static/img/register.png" alt="">
+        </div>
+
+        <!--表单内容-->
+        <div class="content">
+
+            <div class="agent-name common">
+                <div>
+                    <i class="iconfont icon-bitian"></i>
+                    <input type="text" placeholder="用户名" class="ipt" name="uername" id="username">
+                </div>
+                <span id="uername_err"  class="err_msg"><h1>用户名已存在</h1></span>
+            </div>
+            <div class="agent-password common">
+                <i class="iconfont icon-bitian"></i>
+                <input type="password" placeholder="密码" class="ipt" name="password"  id="password">
+                <div class="password-check" style="color:red;display:none;font-size:30px;padding-top:10px;opacity:0.5;">两次密码输入不同!</div>
+            </div>
+            <div class="agent-repassword common">
+                <i class="iconfont icon-bitian"></i>
+                <input type="password" placeholder="确认密码" class="ipt"  name="re-password"  id="re-password" >
+                <div class="password-check" style="color:red;display:none;font-size:30px;padding-top:10px;opacity:0.5;">两次密码输入不同!</div>
+            </div>
+            <div class="agent-tel common">
+                <i class="iconfont icon-bitian"></i>
+                <input type="text" placeholder="手机号" class="ipt" name="phoneNum" maxlength="11" id="phoneNum">
+            </div>
+            <div class="agent-vfc common">
+                <i class="iconfont icon-bitian"></i>
+                <input type="text" placeholder="验证码" class="ipt" name="vCode"  id="checkCode">
+                <div class="vfc-content">
+                    <img src="" alt="" class="img" id="checkCodeImg">
+                    <div class="h"  id="changeImg">
+                        <a onclick=reset()><h1>看不清？</h1></a>
+                    </div>
+                </div>
+            </div>
+            <div class="agent-Negotiate">
+                <i class="iconfont icon-fuxuan  NoSelected"></i>
+                <i class="iconfont icon-yk_fuxuan  Selected"></i>
+                <div class="first-h1">
+                    <h1>我已阅读并同意</h1>
+                </div>
+                <div class="second-h1">
+                    <h1>《校惠卡注册协议》</h1>
+                </div>
+            </div>
+            <h3 id="all_check" style="color:red;display:block;font-size:30px;padding-top:10px;opacity:0.5;margin-left:50px">请填写表单中所有的内容！</h3>
+            <div class="agent-register">
+                <button disabled="disabled" id="register">
+                    <h1>立即注册</h1>
+                </button>
+            </div>
+
+            <div class="agent-login">
+                <div>
+                    <h1>已有账号？</h1>
+                </div>
+                <div class="login-btn">
+                    <button class="btn1">
+<!--                        <a href="http://localhost/xhk/login.html">-->
+                            <a href="http://mnsx.top/xhk/login.html">
+                            <h1>登录</h1>
+                        </a>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="xhkBook" style="display: none">
+        <div></div>
+        <textarea disabled="disabled">
+            一、欢迎使用校惠卡
+         感谢您使用我们的产品和服务。
+    用户确认本服务协议后，本服务协议即在用户和校惠卡网站之间产生法律效力，请用户务必在注册之前认真阅读本服务协议内容，如有任何疑问可向平台客服咨询，无论用户事实上是否在注册之前认真阅读过本服务协议内容，只要用户点击“确认”按钮并按照平台注册程序注册成功，其行为将被视为同意并签署本服务协议，本服务协议不涉及平台中用户之间产生的任何法律关系和法律纠纷。
+二、接受条款
+1、本协议内容包括协议正文及所有校惠卡网站已经发布或将来可能发布的各类规则。所有规则为协议不可分割的一部分。
+2、以任何方式进入校惠卡网站并使用服务即表示您已充分阅读、理解并同意接受本协议的条款和条件。
+3、校惠卡有权根据业务需要酌情修订“条款”，并以网站公告的形式进行更新，不再单独通知予您。经修订的“条款”一经在校惠卡公布，即产生效力。如您不同意相关修订，请您立即停止使用“服务”。如您继续使用“服务”，则将视为您已接受经修订的“条款”，当您与校惠卡发生争议时，应以最新的“条款”为准。
+4、校惠卡网络平台的优惠劵不支持一次消费使用多张本店提供的优惠劵
+三、服务使用
+用户同意：
+（1）提供及时、详尽及准确的用户资料。
+（2）不断更新注册资料，符合及时、详尽、准确的要求。所有原始键入的资料将引用为注册资料。
+（3）用户同意遵守《中华人民共和国保守国家秘密法》、《中华人民共和国计算机信息系统安全保护条例》、《计算机软件保护条例》等有关计算机及互联网规定的法律和法规、实施办法。在任何情况下，校惠卡合理地认为用户的行为可能违反上述法律、法规，校惠卡可以在任何时候，不经事先通知终止向该用户提供服务，不需对用户或第三方负责。
+四、用户的权利和义务
+1、用户有权利拥有自己在校惠卡的用户名及密码，并有权利使用自己的用户名及密码随时登陆校惠卡。用户不得以任何形式擅自转让或授权他人使用自己的校惠卡用户名。用户须自行负责自己的用户账号和密码，且须对在用户账号密码下发生的所有活动（包括但不限于发布需求信息、网上点击同意各类协议、规则、参与需求投标等）承担责任。用户有权根据需要更改登录和账户提现密码。
+因用户的过错导致的任何损失由用户自行承担，该过错包括但不限于：不按照交易提示操作，未及时进行交易操作，遗忘或泄漏密码，密码被他人破解，用户使用的计算机被他人侵入。
+2、用户有权根据本协议的规定以及校惠卡上发布的相关规则利用查询或使用校惠卡网站上所提供的相关服务，并可参加校惠卡发布的有关活动以及有权享受校惠卡提供的其它的有关信息服务及活动。
+3、用户在校惠卡网站上交易过程中如与其他用户因交易产生纠纷，可以请校惠卡从中予以协调，用户如发现其他用户有违法或违反本服务协议的行为可以向校惠卡网站进行反映并要求处理。如用户因网上交易与其他用户产生诉讼的，用户有权通过司法部门要求校惠卡提供相关资料。
+4、用户应当保证在使用校惠卡网站进行交易过程中遵守诚实信用的原则，不在交易过程中采取任何不正当行为。
+5、用户在校惠卡网站上不得发布各类违法或违规信息；用户在校惠卡网站上不得提供或买卖国家禁止销售或限制销售的服务，不得买卖侵犯他人知识产权或其它合法权益的服务，也不得买卖违背社会公共利益或公共道德的、或是校惠卡认为不适合在校惠卡网站上所提供的服务。
+6、用户承诺其在使用校惠卡时实施的所有行为均遵守国家相关的法律、法规和校惠卡的相关规定及协议和声明，以及各种社会公共利益或公共道德。如有违反导致任何法律后果的发生，用户将以其名义独立承担所有相应的法律责任。
+7、用户同意不对校惠卡网站上任何数据作商业性利用或恶意更改，包括但不限于在未经牵翼网事先书面批准的情况下，以复制、传播等方式使用在校惠卡上展示的任何资料和数据。
+8、您有权向校惠卡要求注销您的账户，经牵翼审核同意的，校惠卡将注销您的账户，届时，您与校惠卡基于本协议的合同关系即终止。您的账户被注销后，牵翼没有义务为您保留或向您披露您账户中的任何信息，也没有义务向您或第三方转发任何您未曾阅读或发送过的信息。
+9、您理解并同意，您与校惠卡的合同关系终止后：
+a)校惠卡有权继续保存您的资料。
+b)您在使用服务期间存在违法行为或违反本协议和/或规则的行为的，校惠卡仍可依据本协议向您主张权利。
+c）您在使用服务期间因使用服务与其他用户之间发生的关系，不因本协议的终止而终止，其他用户仍有权向您主张权利，您应继续按您的承诺履行义务。
+五、校惠卡网站的权利和义务
+1、校惠卡网站有义务在现有技术水平的基础上努力确保整个网上服务的正常运行，尽力避免服务中断或将中断时间限制在最短时间内，保证用户网上交流活动的顺利进行。
+2、对用户在使用校惠卡网站中所遇到的问题及反映的情况，校惠卡网站会及时做出回复。
+3、因网上交易的特殊性，校惠卡网站没有义务对所有用户提供的服务以及与交易有关的其它服务和事项进行事先任何全部审查。
+4、企业用户在校惠卡网站交易过程中如与其它企业或个人用户因交易产生纠纷，可请求校惠卡从中予以协调。如因此而产生诉讼的，用户可通过司法部门或行政部门依照法定程序要求校惠卡提供相关数据，校惠卡会配合提供有关资料，但不承担由此而产生的一切相关责任；校惠卡网站有权对用户发布的全部内容及交易行为进行查阅，发现其发布内容或交易行为中存在任何问题或怀疑，均有权向用户发出询问及要求改正的通知或者直接做出删除等处理。
+5、校惠卡有权利保护用户在校惠卡网站的所有个人信息及校惠卡网站的消费记录。
+六、修改和终止服务
+1、校惠卡始终在不断更改和改进校惠卡网站的服务。校惠卡可能会增加或删除功能，也可能暂停或彻底停止某项服务。校惠卡将在中断或终止服务时通知用户。
+2、如校惠卡网站通过用户提供的信息与用户联系时，发现用户在注册时填写的注册信息已不存在或无法找到其电话号码的，经校惠卡以其它联系方式通知用户更改后而用户仍未能尽快提供新注册信息的，校惠卡网站有权终止向该用户提供服务。
+3、在用户提供的信息涉嫌造假、用户违反相关法律规定、用户违反本服务协议相关规定时，校惠卡网站有权中断或终止向该用户提供服务，其中如有给个人用户造成重大人身、财产损失者，校惠卡将向有关执法部门反映，并追究其法律责任。但如该用户在被校惠卡中断或终止提供服务后，再一次直接或间接或以他人名义注册为校惠卡用户的，校惠卡有权再次单方面终止向该用户提供服务。
+4、我们认为您拥有自己数据的所有权并保留对此类数据的访问权限，这一点非常重要。如果我们停止某项服务，在合理可能的情况下，我们会向用户发出合理的提前通知，并让用户有机会将信息从服务中转移出来。
+七、免责条款
+校惠卡网站旨在建立一个网上优惠平台，所发布的信息虽经初步筛选，但不能保证其所述是完全真实可靠的，信息持有者或提供者应依法对其提供的信息承担全部责任。
+校惠卡对任何在校惠卡网站发布信息或使用信息所带来的风险不承担任何责任。限于数据更新机制等原因，校惠卡无法保证搜索结果、服务信息等数据的实时更新，店铺、服务的CNAS、CMA资质仅供参考。访问和使用校惠卡者应自行判断相关信息。
+对用户使用网站、与校惠卡网站相关的任何内容、服务或其它链接至校惠卡的站点、内容均不作直接、间接、法定、约定的保证。无论在任何原因下（包括但不限于疏忽原因），对用户或任何人通过使用校惠卡的信息或由校惠卡链接的信息，或其他与校惠卡链接的网站信息所导致的损失或损害（包括直接、间接、特别或后果性的损失或损害，例如收入或利润之损失，电脑系统之损坏或数据丢失等后果），责任均由使用者自行承担（包括但不限于疏忽责任）。
+校惠卡网站保留随时修改此用户服务协议内容及其它相关文件的权利，本用户服务协议、其它相关文件以及与其相关的内容如有变动恕不另行通知。
+
+
+
+        </textarea>
+    </div>
+</body>
+
+<script>
+    window.addEventListener('load', function(){
+        //看不清
+         reset();
+
+        let register = document.querySelector('#register');
+        //发送注册
+        register.addEventListener('click', function(){
+            let username = document.querySelector('#username');
+            let password = document.querySelector('#password');
+            let phoneNUm = document.querySelector('#phoneNum');
+            let vCode = document.querySelector('#checkCode');
+            let json = [];
+            let user = {};
+            user.username = username.value;
+            user.password = password.value;
+            user.phoneNum = phoneNUm.value;
+            json.push(user);
+            json.push(vCode.value);
+            let str = JSON.stringify(json);
+            let xhr = new XMLHttpRequest();
+            // xhr.open("POST", "http://localhost/xhk/user/register", true)
+            xhr.open("POST", "http://mnsx.top/xhk/user/register", true)
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(str);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    if(xhr.responseText === "true"){
+                        alert("注册成功!");
+                        location.href="/xhk/login.html";
+                    }else if(xhr.responseText === "false"){
+                        reset();
+                        alert("操作失败!");
+                    }else{
+                        reset();
+                        alert(xhr.responseText);
+                    }
+                }
+            }
+        })
+    })
+
+    function reset(){
+        let ipt = document.getElementById('checkCode');
+        ipt.value = '';
+        let xhr = new XMLHttpRequest();
+        // xhr.open("GET", "http://localhost/xhk/register")
+        xhr.open("GET", "http://mnsx.top/xhk/register")
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                let vcode = document.querySelector('#checkCodeImg');
+                vcode.src = xhr.responseURL;
+            }
+        }
+    }
+</script>
+
+</html>

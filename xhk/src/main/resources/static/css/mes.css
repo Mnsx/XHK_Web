@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    /*-webkit-appearance: none;*/
+}
+
+body {
+    min-width: 320px;
+    max-width: 750px;
+    width: 10rem;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, serif;
+    overflow-y: hidden;
+    background-color: #F2F2F2;
+}
+
+@media screen and (min-width:750px) {
+    html {
+        font-size: 75px !important;
+    }
+}
+
+@media screen and (max-height: 350px) {
+    html {
+        font-size: 35px !important;
+    }
+}
+
+img,
+a {
+    -webkit-touch-callout: none;
+}
+html{
+}
+.selected i {
+    color: cornflowerblue;
+}
+
+body {
+    /*max-width: 375px;*/
+    /*min-width: 320px;*/
+    width: 100%;
+    margin: 0 auto;
+    /*background: #fff;*/
+    font-size: .3733rem;
+    background-color: #e8eae7;
+}
+
+.header {
+    position: fixed;
+    width:10rem ;
+    height: 1.385rem;
+    background-color: #4e5174;
+    line-height: 1.44rem;
+}
+
+.header a:nth-child(1) {
+    float: left;
+    color: #fff;
+    letter-spacing: .0533rem;
+    margin-left: .3467rem;
+    font-size: .5128rem;
+    font-weight: bold;
+}
+
+.header a:nth-child(2) {
+    float: right;
+    color: #fff;
+    font-size: .4rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    margin-right: .3467rem;
+}
+
+.messages {
+    height: 15.769rem  /* 1230/78 */;
+    padding-top: 1.385rem;
+    overflow: auto;
+    /*-解决父盒子与子盒子边距问题*/
+
+}
+
+.messages .message {
+    margin: .3333rem auto;
+    width: 93%;
+    height: 1.8667rem;
+    border-radius: 18px;
+    background-color: #fbfbfa;
+    overflow: hidden;
+    /*-解决父盒子与子盒子边距问题*/
+}
+
+.top {
+    margin-top: .16rem;
+}
+
+.top img {
+    width: .48rem;
+    height: .48rem;
+    vertical-align: middle;
+    /*使图片与文字居中对齐*/
+    margin-left: .4rem
+}
+
+.top a:nth-child(1) {
+    font-size: .2667rem;
+}
+
+.top .time {
+    font-size: .2133rem;
+    color: #9c9ca2;
+    float: right;
+    margin-right: .6667rem;
+}
+
+.content {
+    font-size: .2133rem;
+    color: #9c9ca2;
+    width: 88%;
+    margin: 0 auto;
+    margin-top: .1333rem;
+}
+
+
+/*footer开始*/
+
+.footer {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    width: 10rem  /* 780/78 */;
+    height: 1.564rem  /* 122/78 */;
+    justify-content: space-around;
+    padding-bottom: 1.8rem;
+    border-top: 0.026rem  /* 2/78 */ solid #fff ;
+    background: white;
+    z-index: 999;
+}
+
+.footer h1 {
+    font-size: 0.256rem  /* 20/78 */;
+}
+.footer span {
+    display: flex;
+    justify-content: space-around;
+}
+.footer i {
+    font-size: 1.026rem  /* 80/78 */;
+}
+.footer .news {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.128rem  /* 10/78 */;
+    /*margin-left: 50px;*/
+}
+.footer .iFirst {
+    display: flex;
+    flex-direction: column;
+    /*margin-top:0px;*/
+    /*margin-left: 100px;*/
+}
+.footer .iFirst i {
+    position: relative;
+    margin-top: 0.128rem  /* 10/78 */;
+}
+.footer .my {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.128rem  /* 10/78 */;
+    /*margin-left: 90px;*/
+}
+/*footer结束*/

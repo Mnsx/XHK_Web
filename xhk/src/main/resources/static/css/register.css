@@ -1,0 +1,237 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+a {
+   text-decoration: none;
+}
+
+
+body {
+    background: #F7F7F7;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    padding: 10px 0;
+}
+.header h1 {
+    font-size: 70px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 10px;
+    line-height: 5rem;
+    color: #878a87;
+}
+
+.register-img {
+    width: 100%;
+}
+.register-img  img {
+    width: 100%;
+}
+
+
+
+.content {
+    width: 100%;
+    height: 1450px;
+    background: #F7F7F7;
+    padding-top: 50px;
+}
+
+/*共同样式*/
+.common{
+    position: relative;
+    width: 90%;
+    height:100px;
+    margin: 80px auto;
+}
+.ipt {
+    width: 100%;
+    height: 100px;
+    /*margin: 50px auto;*/
+    background: #FFFFFF;
+    outline: none;
+    border:1px solid #FEFEFE;
+    font-size: 50px;
+    padding-left: 100px;
+    letter-spacing: 2px;
+}
+.content .common i {
+    position: absolute;
+    font-size: 50px;
+    top:20px;
+    left: 20px;
+    color:red;
+}
+/*用户名*/
+.content .agent-name  {
+    position: relative;
+    margin-top: 10px !important;
+}
+.content .agent-name .err_msg h1 {
+    position: absolute;
+    bottom:-60px;
+    left:50px;
+    display: none;
+    font-size: 40px;
+    font-weight: 400;
+    color:red;
+}
+
+/*验证码*/
+.content .agent-vfc {
+    display: flex;
+    /*width: 80%;*/
+    /*margin: 80px 0 80px 50px;*/
+}
+.content .agent-vfc .ipt {
+    width: 50%;
+}
+.vfc-content {
+    display: flex;
+    width: 70%;
+    margin-left: 50px;
+}
+.content .agent-vfc .img {
+    width: 120%;
+    height: 100%;
+}
+.content .agent-vfc .h {
+    display: flex;
+    width: 100%;
+    line-height: 7rem;
+    margin-left: 60px;
+}
+.content .agent-vfc h1 {
+    font-size: 40px;
+    font-weight: 500;
+    color: #6b6b6b;
+}
+
+/*文本提示文字*/
+input::-webkit-input-placeholder {
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: #d6d7d7;
+}
+
+
+/*同意*/
+.agent-Negotiate {
+    position: relative;
+    display: flex;
+    height:100px;
+    width: 90%;
+    margin: 0 auto ;
+    /*background: #959ec9;*/
+}
+.content .agent-Negotiate .NoSelected{
+    position: absolute;
+    font-size: 50px;
+    left:10px;
+    color: #959798;
+}
+.content .agent-Negotiate .Selected{
+    display: none;
+    position: absolute;
+    font-size: 58px;
+    left:6px;
+    top:-3px;
+    color:#389BFF;
+}
+.content .agent-Negotiate .first-h1 {
+    margin-left: 90px;
+    font-weight: 500;
+    color: #959798;
+    letter-spacing: 2px;
+}
+.content .agent-Negotiate .second-h1 {
+   color: #4889c5;
+}
+
+
+/*注册*/
+.content .agent-register {
+    height:100px;
+    width: 90%;
+    margin: 0 auto ;
+}
+.content .agent-register button {
+    width: 100%;
+    height: 100%;
+    background: #CECECE;
+    outline: none;
+    border: none;
+}
+.content .agent-register button h1 {
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 10px;
+    color: #FFFFFF;
+}
+
+
+/*登录*/
+.content .agent-login {
+    display: flex;
+    justify-content: space-between;
+    height:100px;
+    width: 90%;
+    margin: 50px auto ;
+}
+.content .agent-login h1 {
+    font-weight: 500;
+    color: #959798;
+    letter-spacing: 2px;
+}
+.content .agent-login .login-btn {
+    width: 20%;
+    height: 60%;
+}
+.content .agent-login button {
+    width: 100%;
+    height: 100%;
+    border:5px solid #CF9874;
+    background: #F8F8F8;
+}
+.content .agent-login button h1 {
+    color: #CF9874;
+    font-size: 30px;
+    font-weight: 550;
+    letter-spacing: 5px;
+}
+
+
+
+/*校惠卡协议开始*/
+.xhkBook textarea {
+    margin: 10%;
+    width: 80%;
+    height:1800px;
+    padding: 30px;
+    letter-spacing: 2px;
+    line-height: 50px;
+    background: #F7F7F7;
+    font-weight: bold;
+}
+
+.xhkBook :first-child {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 36px;
+    left: 30px;
+    border-right:10px solid #d0d6da;
+    border-bottom: 10px solid #d0d6da;
+    transform: rotate(135deg);
+}
+/*校惠卡协议结束*/
+
+
+
