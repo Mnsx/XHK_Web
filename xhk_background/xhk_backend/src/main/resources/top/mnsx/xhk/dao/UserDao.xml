@@ -22,5 +22,55 @@
         SELECT * FROM t_user
         WHERE username = #{username} AND deleted = 0;
     </select>
+
+    <select id="findAll" resultMap="UserEntityMap">
+        SELECT * FROM t_user WHERE username LIKE #{username} ORDER BY modified_time DESC LIMIT ${startPage}, 7
+    </select>
+
+    <select id="findUserByUid" resultMap="UserEntityMap">
+        SELECT * FROM t_user where uid = #{uid}
+    </select>
+
+    <update id="updateUserByUid" parameterType="top.mnsx.xhk.entity.User">
+        UPDATE t_user
+        SET
+        <if test="user.username != null">
+            username = #{user.username},
+        </if>
+        <if test="user.balance != null">
+            balance = #{user.balance},
+        </if>
+        <if test="user.phone != null">
+            phone = #{user.phone},
+        </if>
+        <if test="user.email != null">
+            email = #{user.email},
+        </if>
+        <if test="user.gender != null">
+            gender = #{user.gender},
+        </if>
+        <if test="user.avatar != null">
+            avatar = #{user.avatar},
+        </if>
+        <if test="user.deleted != null">
+            deleted = #{user.deleted},
+        </if>
+        modified_user = #{user.modifiedUser},
+        modified_time = #{user.modifiedTime}
+        WHERE uid = #{uid}
+    </update>
+
+    <update id="deleteByUid">
+        UPDATE t_user SET deleted = 1
+        WHERE uid = #{uid}
+    </update>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM t_user WHERE username LIKE #{like};
+    </select>
+
+    <select id="findUserBySearch" resultMap="UserEntityMap">
+        SELECT * FROM t_user WHERE username LIKE #{username}
+    </select>
 </mapper>
  

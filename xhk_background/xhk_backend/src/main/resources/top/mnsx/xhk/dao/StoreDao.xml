@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mnsx.xhk.dao.StoreDao">
+    <resultMap id="StoreEntityMap" type="top.mnsx.xhk.entity.Store">
+        <id column="sid" property="sid"/>
+        <result column="store_name" property="storeName"/>
+        <result column="photo_url" property="photoUrl"/>
+        <result column="created_user" property="createdUser"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <insert id="insertStore">
+        INSERT INTO t_store
+        (uid, store_name, phone, location, created_user, created_time, modified_user, modified_time)
+        VALUES (#{store.uid}, #{store.storeName}, #{store.phone}, #{store.location}, #{store.createdUser}, #{store.createdTime}, #{store.modifiedUser}, #{store.modifiedTime})
+    </insert>
+
+    <select id="findAll" resultMap="StoreEntityMap">
+        SELECT * FROM t_store WHERE store_name LIKE #{storeName} ORDER BY modified_time DESC LIMIT ${startPage}, 7
+    </select>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM t_store WHERE store_name LIKE #{like};
+    </select>
+
+    <select id="getStoreByStoreName" resultType="top.mnsx.xhk.entity.Store">
+        SELECT * FROM t_store WHERE store_name = #{storeName}
+    </select>
+
+    <select id="findStoreBySid" resultMap="StoreEntityMap">
+        SELECT * FROM t_store WHERE sid = #{sid} AND deleted = 0
+    </select>
+
+    <update id="deleteBySid">
+        update t_store SET deleted = 1
+        WHERE sid = #{sid}
+    </update>
+
+    <update id="modifiedStore" parameterType="top.mnsx.xhk.entity.Store">
+        UPDATE t_store
+        SET
+        <if test="store.storeName != null">
+            store_name = #{store.storeName},
+        </if>
+        <if test="store.photoUrl != null">
+            photo_url = #{store.photoUrl},
+        </if>
+        <if test="store.phone != null">
+            phone = #{store.phone},
+        </if>
+        <if test="store.location != null">
+            location = #{store.location},
+        </if>
+        <if test="store.description != null">
+            description = #{store.description},
+        </if>
+        <if test="uid != null">
+            uid = #{uid},
+        </if>
+        <if test="store.deleted != null">
+            deleted = #{store.deleted},
+        </if>
+        modified_user = #{store.modifiedUser},
+        modified_time = #{store.modifiedTime}
+        WHERE sid = #{store.sid}
+    </update>
+</mapper>   
+ 

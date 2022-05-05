@@ -7,7 +7,14 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.HandlerInterceptor;
+import top.mnsx.xhk.config.LoginInterceptorConfig;
 import top.mnsx.xhk.utils.JWTUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +26,15 @@ import java.util.Map;
 /**
  * 登录拦截器
  */
+@CrossOrigin
+@Component
 public class LoginInterceptor implements HandlerInterceptor {
+    private StringRedisTemplate stringRedisTemplate;
+
+    public LoginInterceptor(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
+
     /**
      * 进入程序前得拦截
      * @param request 请求类
@@ -30,11 +45,16 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader("token");
-        HttpSession session = request.getSession();
+        if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
+            return true;
+        }
+        String origin = request.getHeader("Origin");
+        response.setHeader("Access-Control-Allow-Origin", origin);
+        String token = request.getHeader("Authorization");
         Map<String, Object> map = new HashMap<>();
+        String code = (String) stringRedisTemplate.opsForHash().get("5", "code");
         try {
-            JWTUtils.verify(token, (String)session.getAttribute("code"));
+            JWTUtils.verify(token, code);
             return true;
         } catch (TokenExpiredException e) {
             map.put("state", false);
