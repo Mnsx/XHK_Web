@@ -4,13 +4,13 @@
     <el-breadcrumb separator-class="el-icon-arrow-right" style="margin-bottom:20px">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>数据管理</el-breadcrumb-item>
-      <el-breadcrumb-item>商家管理</el-breadcrumb-item>
+      <el-breadcrumb-item>券包管理</el-breadcrumb-item>
     </el-breadcrumb>
 
     <!-- 头部 -->
     <el-row :gutter="20">
       <el-col :span="12">
-        <el-button type="primary" @click="drawer2 = true" plain>新建用户</el-button>
+        <el-button type="primary" @click="drawer2 = true" plain>新建</el-button>
       </el-col>
       <el-col :span="6">
         <el-input

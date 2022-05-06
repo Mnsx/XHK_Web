@@ -60,10 +60,10 @@
         WHERE uid = #{uid}
     </update>
 
-    <update id="deleteByUid">
-        UPDATE t_user SET deleted = 1
+    <delete id="deleteByUid">
+        DELETE FROM t_user
         WHERE uid = #{uid}
-    </update>
+    </delete>
 
     <select id="getCount" resultType="int">
         SELECT COUNT(*) FROM t_user WHERE username LIKE #{like};

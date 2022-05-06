@@ -9,7 +9,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 public class XhkApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext run = SpringApplication.run(XhkApplication.class, args);
+        SpringApplication.run(XhkApplication.class, args);
     }
 
 }

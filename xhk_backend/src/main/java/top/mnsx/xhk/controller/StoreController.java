@@ -69,7 +69,6 @@ public class StoreController extends BaseController{
     @PutMapping("/modified_store_by_sid/{username}")
     public Map<String, Object> modifiedStoreBySid(@PathVariable("username")String username, @RequestBody String data) {
         Store store = JSON.parseObject(data, Store.class);
-        System.out.println(store + ":" + username);
         storeService.modifiedStoreBySid(store, username);
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);

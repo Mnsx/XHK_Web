@@ -1,7 +1,6 @@
 package top.mnsx.xhk.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.sun.deploy.net.HttpResponse;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

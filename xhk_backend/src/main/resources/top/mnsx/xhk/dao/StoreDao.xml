@@ -36,10 +36,10 @@
         SELECT * FROM t_store WHERE sid = #{sid} AND deleted = 0
     </select>
 
-    <update id="deleteBySid">
-        update t_store SET deleted = 1
+    <delete id="deleteBySid">
+        DELETE FROM t_store
         WHERE sid = #{sid}
-    </update>
+    </delete>
 
     <update id="modifiedStore" parameterType="top.mnsx.xhk.entity.Store">
         UPDATE t_store
