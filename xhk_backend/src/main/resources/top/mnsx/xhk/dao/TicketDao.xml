@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mnsx.xhk.dao.TicketDao">
+    <resultMap id="TicketEntityMap" type="top.mnsx.xhk.entity.Ticket">
+        <id property="tid" column="tid"/>
+        <result property="createdTime" column="created_time"/>
+        <result property="createdUser" column="created_user"/>
+        <result property="modifiedUser" column="modified_user"/>
+        <result property="modifiedTime" column="modified_time"/>
+    </resultMap>
+
+    <insert id="insertTicket">
+        INSERT INTO t_ticket (sid, demand, discount, created_user, created_time, modified_user, modified_time)
+        VALUES(#{sid}, #{demand}, #{discount}, #{username}, #{now}, #{username}, #{now})
+    </insert>
+
+    <select id="findAll" resultMap="TicketEntityMap">
+        SELECT * FROM t_ticket ORDER BY modified_time DESC LIMIT ${startPage}, 7
+    </select>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM t_ticket
+    </select>
+
+    <delete id="deleteByTid">
+        DELETE FROM t_ticket
+        WHERE tid = #{tid}
+    </delete>
+
+    <select id="findTicketByTid" resultMap="TicketEntityMap">
+        SELECT * FROM t_ticket WHERE tid = #{tid}
+    </select>
+
+    <update id="updateTicket">
+        UPDATE t_ticket
+        SET
+        <if test="sid = null">
+            sid = #{sid},
+        </if>
+        <if test="ticket.demand != null">
+            demand = #{ticket.demand},
+        </if>
+        <if test="ticket.discount != null">
+            discount = #{ticket.discount},
+        </if>
+        <if test="ticket.deleted != null">
+            deleted = #{ticket.deleted},
+        </if>
+        modified_user = #{username},
+        modified_time = #{now}
+        WHERE tid = #{ticket.tid}
+    </update>
+</mapper>   
+ 

@@ -92,4 +92,12 @@ public class StoreServiceImpl implements IStoreService {
             throw new UpdateException("跟新店家信息时产生未知异常");
         }
     }
+
+    @Override
+    public void removeStoreByUid(Long uid) {
+        Integer rows = storeDao.deleteStoreByUid(uid);
+        if (rows != 1) {
+            throw new DeleteException("删除店家信息时产生未知异常");
+        }
+    }
 }

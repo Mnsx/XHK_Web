@@ -21,7 +21,7 @@
     </insert>
 
     <select id="findAll" resultMap="StoreEntityMap">
-        SELECT * FROM t_store WHERE store_name LIKE #{storeName} ORDER BY modified_time DESC LIMIT ${startPage}, 7
+        SELECT * FROM t_store  WHERE store_name LIKE #{storeName} ORDER BY modified_time DESC LIMIT ${startPage}, 7
     </select>
 
     <select id="getCount" resultType="int">
@@ -33,12 +33,16 @@
     </select>
 
     <select id="findStoreBySid" resultMap="StoreEntityMap">
-        SELECT * FROM t_store WHERE sid = #{sid} AND deleted = 0
+        SELECT * FROM t_store WHERE sid = #{sid}
     </select>
 
     <delete id="deleteBySid">
         DELETE FROM t_store
         WHERE sid = #{sid}
+    </delete>
+
+    <delete id="deleteStoreByUid">
+        DELETE FROM t_store WHERE uid = #{uid}
     </delete>
 
     <update id="modifiedStore" parameterType="top.mnsx.xhk.entity.Store">

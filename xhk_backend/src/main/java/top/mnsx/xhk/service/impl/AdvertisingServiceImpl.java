@@ -43,7 +43,7 @@ public class AdvertisingServiceImpl implements IAdvertisingService {
         if (rows != 1) {
             throw new DeleteException("删除广告数据时产生未知异常");
         }
-        File file = new File("D:\\WorkSpace\\XHK\\xhk_background\\xhk_backend\\src\\main\\resources\\static\\img\\" + result.getFile());
+        File file = new File("D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\" + result.getFile());
         file.delete();
     }
 }

@@ -271,7 +271,7 @@ export default {
         'location': this.form.location,
         'phone': this.form.phone,
         'description': this.form.description,
-        'deleted': this.form.deleted === '正常' ? 0 : 1,
+        'deleted': this.form.deleted === '正常' || '0' ?  0 : 1,
       }, {
         headers: {
           'Authorization': window.localStorage.getItem("token"),

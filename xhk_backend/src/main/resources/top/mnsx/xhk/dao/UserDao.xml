@@ -20,7 +20,7 @@
 
     <select id="findUserByUsername" resultMap="UserEntityMap">
         SELECT * FROM t_user
-        WHERE username = #{username} AND deleted = 0;
+        WHERE username = #{username}
     </select>
 
     <select id="findAll" resultMap="UserEntityMap">

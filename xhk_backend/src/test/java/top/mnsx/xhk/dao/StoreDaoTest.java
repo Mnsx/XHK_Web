@@ -14,7 +14,7 @@ public class StoreDaoTest {
 
     @Test
     public void findAll() {
-        List<Store> storeList = storeDao.findAll(0, "%test%");
+        List<Store> storeList = storeDao.findAll(0, "%%");
         storeList.forEach(System.out::println);
     }
 
@@ -55,5 +55,10 @@ public class StoreDaoTest {
         store.setSid(11L);
         Integer row = storeDao.modifiedStore(store, 26L);
         System.out.println(row);
+    }
+
+    @Test
+    public void deleteStoreByUid() {
+        storeDao.deleteStoreByUid(5L);
     }
 }

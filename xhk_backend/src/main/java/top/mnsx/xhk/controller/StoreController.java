@@ -25,6 +25,7 @@ public class StoreController extends BaseController{
 
     @GetMapping("/list_by_search/{curPage}")
     public Map<String, Object> listAll(@PathVariable("curPage")Integer curPage, String searchText) {
+        System.out.println(searchText);
         List<Store> stores = storeService.listStore(searchText, curPage);
         List<StoreVO> data = new ArrayList<>();
         for (Store store : stores) {
@@ -42,7 +43,7 @@ public class StoreController extends BaseController{
     @PostMapping("/add_store")
     public Map<String, Object> addStore(@RequestBody String json) {
         Map<String, String> map = JSON.parseObject(json, Map.class);
-        Store store = new Store(map.get("storeName"), map.get("phone"), map.get("location"));
+        Store store = new Store(map.get("sid"), map.get("phone"), map.get("location"));
         storeService.addStore(store, map.get("username"));
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);

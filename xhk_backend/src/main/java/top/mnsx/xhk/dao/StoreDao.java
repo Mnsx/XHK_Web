@@ -54,5 +54,13 @@ public interface StoreDao {
      */
     Store findStoreBySid(@Param("sid")Long sid);
 
+    /**
+     * 更新商家信息
+     * @param store 商家信息
+     * @param uid 用户编号
+     * @return 返回受影响行数
+     */
     Integer modifiedStore(@Param("store")Store store, @Param("uid")Long uid);
+
+    Integer deleteStoreByUid(@Param("uid")Long uid);
 }

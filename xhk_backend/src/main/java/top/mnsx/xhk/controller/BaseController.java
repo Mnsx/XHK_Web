@@ -29,7 +29,10 @@ public class BaseController {
         } else if (e instanceof AdvertisingNotFoundException) {
             result.put("state", "4002");
             result.put("message", "广告不存在异常");
-        } else if (e instanceof UsernameNotFoundException) {
+        } else if (e instanceof TicketNotFoundException) {
+            result.put("state", "4007");
+            result.put("message", "优惠券不存在异常");
+        }  else if (e instanceof UsernameNotFoundException) {
             result.put("state", "4003");
             result.put("message", "用户数据不存在");
         } else if (e instanceof StoreNameDuplicatedException) {

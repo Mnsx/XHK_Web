@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mnsx.xhk.dao.CodeDao">
+    <insert id="insertCode">
+        INSERT INTO t_code (code) VALUES (#{code})
+    </insert>
+
+    <delete id="deleteByCid">
+        DELETE FROM t_code WHERE cid = #{cid}
+    </delete>
+
+    <select id="findAll" resultType="top.mnsx.xhk.entity.Code">
+        SELECT * FROM t_code LIMIT ${startPage}, 7
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM t_code
+    </select>
+</mapper>
+ 

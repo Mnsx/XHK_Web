@@ -49,4 +49,6 @@ public interface IStoreService {
      * @param username 所属人信息
      */
     void modifiedStoreBySid(Store store, String username);
+
+    void removeStoreByUid(Long uid);
 }

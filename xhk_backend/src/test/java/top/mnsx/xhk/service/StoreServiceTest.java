@@ -34,4 +34,9 @@ public class StoreServiceTest {
         store.setSid(7L);
         storeService.modifiedStoreBySid(store, "test9");
     }
+
+    @Test
+    public void removeStoreByUid() {
+        storeService.removeStoreByUid(5L);
+    }
 }

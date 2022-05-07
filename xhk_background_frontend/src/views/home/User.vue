@@ -282,7 +282,7 @@ export default {
         'email':this.form.email,
         'gender':this.form.gender,
         'avatar':this.form.avatar,
-        'deleted': this.form.deleted === '正常' ? 0 : 1,
+        'deleted': this.form.deleted === '正常' || '0' ?  0 : 1,
       }, {
         headers: {
           'Authorization': window.localStorage.getItem("token"),
@@ -294,7 +294,7 @@ export default {
             message: "修改成功",
             type: 'success'
           });
-          this.drawer = false;
+          this.drawer1 = false;
         } else {
           this.$message({
             showClose: true,

@@ -65,7 +65,7 @@ public class AdvertisingController extends BaseController {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         String uuid = UUID.randomUUID().toString();
         fileName = uuid + suffixName;
-        String photoPath = "D:\\WorkSpace\\XHK\\xhk_background\\xhk_backend\\src\\main\\resources\\static\\img";
+        String photoPath = "D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\";
         File file = new File(photoPath);
         if (!file.exists()) {
             file.mkdir();

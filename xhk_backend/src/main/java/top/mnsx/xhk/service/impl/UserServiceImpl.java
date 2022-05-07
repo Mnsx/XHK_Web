@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import top.mnsx.xhk.dao.UserDao;
 import top.mnsx.xhk.entity.User;
+import top.mnsx.xhk.service.IPackageService;
+import top.mnsx.xhk.service.IStoreService;
 import top.mnsx.xhk.service.IUserService;
 import top.mnsx.xhk.service.ex.*;
 
@@ -20,6 +22,10 @@ import java.util.UUID;
 public class UserServiceImpl implements IUserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private IPackageService packageService;
+    @Autowired
+    private IStoreService storeService;
 
     @Override
     public void saveUser(User user) {
@@ -119,6 +125,8 @@ public class UserServiceImpl implements IUserService {
         if (rows != 1) {
             throw new DeleteException("删除用户数据时产生了未知的异常");
         }
+        packageService.removePackage(uid);
+        storeService.removeStoreBySid(uid);
     }
 
     @Override

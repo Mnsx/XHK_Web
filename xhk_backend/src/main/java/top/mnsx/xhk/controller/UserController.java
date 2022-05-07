@@ -94,6 +94,7 @@ public class UserController extends BaseController{
 
     @GetMapping("/list_by_search/{curPage}")
     public Map<String, Object> list(@PathVariable("curPage") Integer curPage, String username) {
+        System.out.println(username);
         // 获取数据
         List<User> data = userService.listUser(curPage, username);
         Integer count = userService.getCount(username);
