@@ -52,7 +52,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Origin", origin);
         String token = request.getHeader("Authorization");
         Map<String, Object> map = new HashMap<>();
-        String code = (String) stringRedisTemplate.opsForHash().get("5", "code");
+        String code = (String) stringRedisTemplate.opsForHash().get("1", "code");
         try {
             JWTUtils.verify(token, code);
             return true;

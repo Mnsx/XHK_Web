@@ -71,13 +71,14 @@ public class UserController extends BaseController{
     }
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestBody String data) {
+    public Map<String, String> login(@RequestBody String data, HttpSession session) {
         Map<String, String> reqData = JSON.parseObject(data, Map.class);
         // 登录逻辑
         User result = userService.login(reqData.get("username"), reqData.get("password"));
         // 生成token
         Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(result.getUid()));
+        session.setAttribute("uid", result.getUid());
         map.put("username", result.getUsername());
         String token = JWTUtils.createToken(map, result.getCode());
         // 将密钥保存在session中
