@@ -52,4 +52,10 @@ public interface TicketDao {
      * @return 返回受影响的行数
      */
     Integer updateTicket(@Param("ticket")Ticket ticket, @Param("username")String username, @Param("now")Date now);
+
+    /**
+     * 获取所有的券
+     * @return 返回所有的优惠券集合
+     */
+    List<Ticket> getAll();
 }

@@ -10,6 +10,15 @@ import Package from "../views/home/Package";
 import Ticket from "../views/home/Ticket";
 import Code from "../views/home/Code";
 import Advertising from "../views/Advertising";
+import First from "../views/simulation/First";
+import Message from "../views/simulation/Message"
+import My from "../views/simulation/My";
+import Simulation from "../views/Simulation";
+import Info from "../views/simulation/my/Info";
+import ModifyInfo from "../views/simulation/my/ModifyInfo";
+import ModifyPasswd from "../views/simulation/my/ModifyPasswd";
+import Recharge from "../views/simulation/my/Recharge";
+import ModifyAvatar from "../views/simulation/my/ModifyAvatar";
 
 Vue.use(Router)
 
@@ -69,6 +78,55 @@ export default new Router({
           path: '/advertising',
           name: 'Advertising',
           component: Advertising
+        },
+      ]
+    },
+    {
+      path: '/simulation',
+      name: 'Simulation',
+      component: Simulation,
+      children: [
+        {
+          path: '/first',
+          name: 'First',
+          component: First
+        },
+        {
+          path: '/message',
+          name: 'Message',
+          component: Message
+        },
+        {
+          path: '/my',
+          name: 'My',
+          component: My,
+          children: [
+            {
+              path: '/info',
+              name: '/info',
+              component: Info
+            },
+            {
+              path: '/modifyInfo',
+              name: '/modifyInfo',
+              component: ModifyInfo
+            },
+            {
+              path: '/modifyPasswd',
+              name: '/modifyPasswd',
+              component: ModifyPasswd
+            },
+            {
+              path: '/recharge',
+              name: '/recharge',
+              component: Recharge
+            },
+            {
+              path: '/modifyAvatar',
+              name: '/modifyAvatar',
+              component: ModifyAvatar
+            }
+          ]
         }
       ]
     },

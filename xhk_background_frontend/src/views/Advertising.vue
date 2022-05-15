@@ -13,6 +13,7 @@
       name="data"
       action="http://localhost:8081/ads/save_ad"
       :on-success="success"
+      :before-upload="beforeAvatarUpload"
       multiple>
       <i class="el-icon-upload"></i>
       <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -107,6 +108,18 @@ export default {
         })
       }
       this.showData();
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
     }
   },
   created() {

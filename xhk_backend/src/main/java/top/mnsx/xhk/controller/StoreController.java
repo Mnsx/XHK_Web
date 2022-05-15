@@ -7,7 +7,6 @@ import top.mnsx.xhk.entity.Store;
 import top.mnsx.xhk.entity.User;
 import top.mnsx.xhk.service.IStoreService;
 import top.mnsx.xhk.service.IUserService;
-import top.mnsx.xhk.vo.StoreVO;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -26,12 +25,7 @@ public class StoreController extends BaseController{
     @GetMapping("/list_by_search/{curPage}")
     public Map<String, Object> listAll(@PathVariable("curPage")Integer curPage, String searchText) {
         System.out.println(searchText);
-        List<Store> stores = storeService.listStore(searchText, curPage);
-        List<StoreVO> data = new ArrayList<>();
-        for (Store store : stores) {
-            User user = userService.findUserByUid(store.getUid());
-            data.add(new StoreVO(store, user.getUsername()));
-        }
+        List<Store> data = storeService.listStore(searchText, curPage);
         Integer count = storeService.getCount(searchText);
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);
@@ -43,8 +37,8 @@ public class StoreController extends BaseController{
     @PostMapping("/add_store")
     public Map<String, Object> addStore(@RequestBody String json) {
         Map<String, String> map = JSON.parseObject(json, Map.class);
-        Store store = new Store(map.get("sid"), map.get("phone"), map.get("location"));
-        storeService.addStore(store, map.get("username"));
+        Store store = new Store(map.get("storeName"), map.get("phone"), map.get("location"));
+        storeService.addStore(store, "Mnsx_x");
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);
         return response;
@@ -60,7 +54,7 @@ public class StoreController extends BaseController{
 
     @GetMapping("/find_one_by_sid/{sid}")
     public Map<String, Object> findOneBySid(@PathVariable("sid") Long sid) {
-        StoreVO data = storeService.findOneBySid(sid);
+        Store data = storeService.findOneBySid(sid);
         Map<String, Object> response = new HashMap<>();
         response.put("data", data);
         response.put("state", HttpServletResponse.SC_OK);

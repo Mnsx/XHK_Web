@@ -225,6 +225,7 @@ export default {
             'Authorization': window.localStorage.getItem("token"),
           }
         }).then((response) => {
+          console.log(response);
           if (response.data.state === 200) {
             this.$message({
               showClose: true,

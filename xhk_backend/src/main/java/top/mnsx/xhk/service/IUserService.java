@@ -60,4 +60,18 @@ public interface IUserService {
      * @return 返回用户信息
      */
     List<User> findUserBySearch(String username);
+
+    /**
+     * 更新头像
+     * @param avatar 头像url
+     * @param uid 用户编号
+     */
+    void modifiedAvatar(String avatar, Long uid);
+
+    /**
+     * 修改密码
+     * @param oldPass 旧密码
+     * @param newPass 新密码
+     */
+    void modifiedPass(String oldPass, String newPass, Long uid);
 }

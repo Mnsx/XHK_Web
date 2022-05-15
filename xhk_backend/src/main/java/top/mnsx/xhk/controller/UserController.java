@@ -7,16 +7,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import top.mnsx.xhk.controller.ex.FileSizeMoreMaxSizeException;
+import top.mnsx.xhk.controller.ex.PhotoNotAcceptException;
 import top.mnsx.xhk.entity.User;
 import top.mnsx.xhk.service.IUserService;
 import top.mnsx.xhk.utils.JWTUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/users")
@@ -43,6 +45,15 @@ public class UserController extends BaseController{
         return response;
     }
 
+    @PutMapping("/modified_user_pass/{uid}")
+    public Map<String, Object> modifiedUserPass(@PathVariable Long uid, @RequestBody String data) {
+        Map map = JSON.parseObject(data, Map.class);
+        userService.modifiedPass((String)map.get("oldPass"), (String)map.get("pass"), uid);
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
+        return response;
+    }
+
     @PutMapping("/modified_user_by_uid")
     public Map<String, Object> modifiedUserByUid(@RequestBody String data) {
         User user = JSON.parseObject(data, User.class);
@@ -58,6 +69,15 @@ public class UserController extends BaseController{
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);
         response.put("data", data);
+        return response;
+    }
+
+    @GetMapping("/find_avatar/{uid}")
+    public Map<String, Object> findAvatar(@PathVariable("uid") Long uid) {
+        User data = userService.findUserByUid(uid);
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
+        response.put("data", data.getAvatar());
         return response;
     }
 
@@ -104,6 +124,31 @@ public class UserController extends BaseController{
         response.put("state", HttpServletResponse.SC_OK);
         response.put("data", data);
         response.put("count", count);
+        return response;
+    }
+
+    @PostMapping("/update_avatar/{uid}")
+    public Map<String, Object> update_avatar(@PathVariable Long uid, @RequestParam("file") MultipartFile data) throws IOException {
+        if (data == null) {
+            throw new PhotoNotAcceptException("图片文件接受异常");
+        }
+        if (data.getSize() > 1048576) {
+            throw new FileSizeMoreMaxSizeException("文件大小超过最大限制");
+        }
+        String fileName = data.getOriginalFilename();
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        String uuid = UUID.randomUUID().toString();
+        fileName = uuid + suffixName;
+        String photoPath = "D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\avatar\\";
+        File file = new File(photoPath);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+        String finalPath = photoPath + File.separator + fileName;
+        userService.modifiedAvatar("http://localhost:8081/img/avatar/" + fileName, uid);
+        data.transferTo(new File(finalPath));
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
         return response;
     }
 }

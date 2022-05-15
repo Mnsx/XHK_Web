@@ -11,7 +11,6 @@ import java.util.Date;
 @Data
 public class Store extends BaseEntity implements Serializable {
     private Long sid;
-    private Long uid;
     private String storeName;
     private String photoUrl;
     private String location;

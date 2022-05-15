@@ -33,62 +33,57 @@
     style="width: 100%">
     <el-table-column
       fixed
-      prop="store.sid"
+      prop="sid"
       label="编号"
       width="150">
     </el-table-column>
     <el-table-column
-      prop="username"
-      label="用户名"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="store.storeName"
+      prop="storeName"
       label="店名"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="store.photoUrl"
+      prop="photoUrl"
       label="图片路径"
       width="300">
     </el-table-column>
     <el-table-column
-      prop="store.phone"
+      prop="phone"
       label="电话"
       width="300">
     </el-table-column>
     <el-table-column
-      prop="store.location"
+      prop="location"
       label="店铺位置"
       width="350">
     </el-table-column>
     <el-table-column
-      prop="store.description"
+      prop="description"
       label="简介"
       width="500">
     </el-table-column>
     <el-table-column
-      prop="store.deleted"
+      prop="deleted"
       label="状态"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="store.createdUser"
+      prop="createdUser"
       label="创建人"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="store.createdTime"
+      prop="createdTime"
       label="创建时间"
       width="350">
     </el-table-column>
     <el-table-column
-      prop="store.modifiedUser"
+      prop="modifiedUser"
       label="修改人"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="store.modifiedTime"
+      prop="modifiedTime"
       label="修改时间"
       width="350">
     </el-table-column>
@@ -97,8 +92,8 @@
       label="操作"
       width="150">
       <template slot-scope="scope">
-        <el-button @click="handleOpen(scope.row.store.sid)" type="text" size="small">修改</el-button>
-        <el-button type="text" @click="handleDelete(scope.row.store.sid)" size="small">删除</el-button>
+        <el-button @click="handleOpen(scope.row.sid)" type="text" size="small">修改</el-button>
+        <el-button type="text" @click="handleDelete(scope.row.sid)" size="small">删除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -120,9 +115,6 @@
     :direction="direction"
     :before-close="handleClose">
     <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="用户名">
-        <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
-      </el-form-item>
       <el-form-item label="店名">
         <el-input v-model="form.storeName" placeholder="请输入店名"></el-input>
       </el-form-item>
@@ -155,9 +147,6 @@
     :direction="direction"
     :before-close="handleClose">
     <el-form ref="form" :model="newForm" label-width="80px">
-      <el-form-item label="用户名">
-        <el-input v-model="newForm.username" placeholder="请输入用户名"></el-input>
-      </el-form-item>
       <el-form-item label="店名">
         <el-input v-model="newForm.storeName" placeholder="请输入店名"></el-input>
       </el-form-item>
@@ -181,7 +170,6 @@ export default {
   methods: {
     handleNew() {
       this.$axios.post('http://localhost:8081/stores/add_store', {
-        'username':this.newForm.username,
         'storeName':this.newForm.storeName,
         'phone':this.newForm.phone,
         'location':this.newForm.location
@@ -239,14 +227,13 @@ export default {
       }).then((response) => {
         if (response.data.state === 200) {
           console.log(response);
-          this.form.username = response.data.data.username;
-          this.form.storeName = response.data.data.store.storeName;
-          this.form.photoUrl = response.data.data.store.photoUrl;
-          this.form.location= response.data.data.store.location;
-          this.form.phone= response.data.data.store.phone;
-          this.form.description= response.data.data.store.description;
-          this.form.deleted = response.data.data.store.deleted === 0 ? '正常' : '注销';
-          this.form.sid = response.data.data.store.sid;
+          this.form.storeName = response.data.data.storeName;
+          this.form.photoUrl = response.data.data.photoUrl;
+          this.form.location= response.data.data.location;
+          this.form.phone= response.data.data.phone;
+          this.form.description= response.data.data.description;
+          this.form.deleted = response.data.data.deleted === 0 ? '正常' : '注销';
+          this.form.sid = response.data.data.sid;
         } else {
           this.$message({
             showClose: true,
@@ -305,6 +292,7 @@ export default {
         }
       }).then((response) => {
         if (response.data.state === 200) {
+          console.log(response);
           this.clearData()
           for (let i = 0; i < response.data.data.length; ++i) {
             this.tableData.push(response.data.data[i]);
@@ -359,7 +347,6 @@ export default {
       total: 1,
       searchTest: '',
       form: {
-        username: '',
         storeName: '',
         photoUrl: '',
         location: '',
@@ -369,7 +356,6 @@ export default {
         sid: ''
       },
       newForm: {
-        username: '',
         storeName: '',
         phone: '',
         location: '',

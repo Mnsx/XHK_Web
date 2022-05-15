@@ -16,8 +16,8 @@
 
     <insert id="insertStore">
         INSERT INTO t_store
-        (uid, store_name, phone, location, created_user, created_time, modified_user, modified_time)
-        VALUES (#{store.uid}, #{store.storeName}, #{store.phone}, #{store.location}, #{store.createdUser}, #{store.createdTime}, #{store.modifiedUser}, #{store.modifiedTime})
+        (store_name, phone, location, created_user, created_time, modified_user, modified_time)
+        VALUES (#{store.storeName}, #{store.phone}, #{store.location}, #{store.createdUser}, #{store.createdTime}, #{store.modifiedUser}, #{store.modifiedTime})
     </insert>
 
     <select id="findAll" resultMap="StoreEntityMap">

@@ -37,4 +37,12 @@ public interface CodeDao {
      * @return 返回受影响行数
      */
     Integer deleteByCid(@Param("cid")Long cid);
+
+    /**
+     * 删除指定注册码
+     * @param code 注册码
+     * @return
+     */
+    Integer deleteByCode(@Param("code") String code);
+
 }

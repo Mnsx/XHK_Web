@@ -8,7 +8,6 @@ import top.mnsx.xhk.entity.Store;
 import top.mnsx.xhk.entity.User;
 import top.mnsx.xhk.service.IStoreService;
 import top.mnsx.xhk.service.ex.*;
-import top.mnsx.xhk.vo.StoreVO;
 
 import java.util.Date;
 import java.util.List;
@@ -43,14 +42,9 @@ public class StoreServiceImpl implements IStoreService {
         if (result != null) {
             throw new StoreNameDuplicatedException("店名重复");
         }
-        User user = userDao.findUserByUsername(username);
-        if (user == null) {
-            throw new UserInfoWrongException("用户信息错误");
-        }
-        store.setUid(user.getUid());
-        store.setCreatedUser(user.getUsername());
+        store.setCreatedUser(username);
         store.setCreatedTime(new Date());
-        store.setModifiedUser(user.getModifiedUser());
+        store.setModifiedUser(username);
         store.setModifiedTime(new Date());
         Integer rows = storeDao.insertStore(store);
         if (rows != 1) {
@@ -71,14 +65,12 @@ public class StoreServiceImpl implements IStoreService {
     }
 
     @Override
-    public StoreVO findOneBySid(Long sid) {
+    public Store findOneBySid(Long sid) {
         Store store = storeDao.findStoreBySid(sid);
         if (store == null) {
             throw new StoreNotFoundException("商家不存在");
         }
-        Long uid = store.getUid();
-        User result = userDao.findUserByUid(uid);
-        return new StoreVO(store, result.getUsername());
+        return store;
     }
 
     @Override

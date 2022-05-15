@@ -14,8 +14,12 @@
       </el-menu-item-group>
     </el-submenu>
     <el-menu-item index="3" @click="toPage('/advertising')">
-      <i class="el-icon-setting"></i>
+      <i class="el-icon-upload"></i>
       <span slot="title">图片管理</span>
+    </el-menu-item>
+    <el-menu-item index="4" @click="toPage('/first')">
+      <i class="el-icon-s-help"></i>
+      <span slot="title">功能模拟</span>
     </el-menu-item>
   </el-menu>
 </template>

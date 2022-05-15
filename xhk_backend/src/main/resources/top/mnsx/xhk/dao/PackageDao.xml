@@ -21,7 +21,7 @@
     </select>
 
     <insert id="insertPackage">
-        INSERT INTO t_package (uid, tid, created_uesr, created_time, modified_user, modified_time) VALUES (#{uid}, #{tid}, #{username}, #{now}, #{username}, #{now})
+        INSERT INTO t_package (uid, tid, created_user, created_time, modified_user, modified_time) VALUES (#{uid}, #{tid}, #{username}, #{now}, #{username}, #{now})
     </insert>
 
     <delete id="deletePackage">

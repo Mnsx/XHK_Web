@@ -27,4 +27,10 @@ public interface IAdvertisingService {
      * @param aid 图片id
      */
     void removeAD(Long aid);
+
+    /**
+     * 获取所有广告
+     * @return 返回所有的广告集合
+     */
+    List<Advertising> getAllAD();
 }

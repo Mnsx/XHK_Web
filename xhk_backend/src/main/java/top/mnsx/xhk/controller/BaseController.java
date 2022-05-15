@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import top.mnsx.xhk.controller.ex.FileSizeMoreMaxSizeException;
+import top.mnsx.xhk.entity.Code;
 import top.mnsx.xhk.service.ex.*;
 
 import java.util.HashMap;
@@ -44,6 +45,9 @@ public class BaseController {
         } else if (e instanceof StoreNotFoundException) {
             result.put("state", "4006");
             result.put("message", "店名不存在");
+        } else if (e instanceof CodeNotFoundException) {
+            result.put("state", "4007");
+            result.put("message", "注册码不存在");
         } else if (e instanceof InsertException) {
             result.put("state", "5000");
             result.put("message", "插入数据时产生未知异常");

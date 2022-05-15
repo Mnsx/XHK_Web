@@ -41,4 +41,10 @@ public interface AdvertisingDao {
      * @return 返回查询到的广告信息
      */
     Advertising findByAid(@Param("aid") Long aid);
+
+    /**
+     * 获取所有的广告
+     * @return 返回所有广告的集合
+     */
+    List<Advertising> getAll();
 }

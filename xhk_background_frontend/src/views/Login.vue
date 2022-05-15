@@ -39,7 +39,7 @@ export default {
             window.localStorage.setItem("token", response.data.token);
             window.localStorage.setItem("uid", response.data.uid);
             window.localStorage.setItem("username", response.data.username);
-            this.$router.push({path:'/home'})
+            this.$router.push({path:'/first'})
             this.$message({
               showClose: true,
               message: '登录成功',

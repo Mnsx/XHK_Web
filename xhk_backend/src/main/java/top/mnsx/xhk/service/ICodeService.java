@@ -1,6 +1,7 @@
 package top.mnsx.xhk.service;
 
 import top.mnsx.xhk.entity.Code;
+import top.mnsx.xhk.entity.Ticket;
 
 import java.util.List;
 
@@ -32,4 +33,11 @@ public interface ICodeService {
      * @param cid 注册码id
      */
     void removeCode(Long cid);
+
+    /**
+     * 删除注册码
+     * @param code 注册码
+     */
+    void removeCode(String code);
+
 }

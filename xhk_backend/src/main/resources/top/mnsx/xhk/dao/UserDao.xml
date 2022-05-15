@@ -34,6 +34,9 @@
     <update id="updateUserByUid" parameterType="top.mnsx.xhk.entity.User">
         UPDATE t_user
         SET
+        <if test="user.password != null">
+            password = #{user.password},
+        </if>
         <if test="user.username != null">
             username = #{user.username},
         </if>
@@ -58,6 +61,13 @@
         modified_user = #{user.modifiedUser},
         modified_time = #{user.modifiedTime}
         WHERE uid = #{uid}
+    </update>
+
+    <update id="modifyAvatar">
+        UPDATE t_user SET avatar = #{avatar},
+                          modified_user = #{user.modifiedUser},
+                          modified_time = #{user.modifiedTime}
+                      WHERE uid = #{user.uid}
     </update>
 
     <delete id="deleteByUid">

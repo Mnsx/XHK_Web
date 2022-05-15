@@ -3,6 +3,8 @@ package top.mnsx.xhk.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import top.mnsx.xhk.dao.PackageDao;
+import top.mnsx.xhk.dao.StoreDao;
 import top.mnsx.xhk.dao.UserDao;
 import top.mnsx.xhk.entity.User;
 import top.mnsx.xhk.service.IPackageService;
@@ -10,6 +12,7 @@ import top.mnsx.xhk.service.IStoreService;
 import top.mnsx.xhk.service.IUserService;
 import top.mnsx.xhk.service.ex.*;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
@@ -23,9 +26,9 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserDao userDao;
     @Autowired
-    private IPackageService packageService;
+    private PackageDao packageDao;
     @Autowired
-    private IStoreService storeService;
+    private StoreDao storeDao;
 
     @Override
     public void saveUser(User user) {
@@ -125,8 +128,7 @@ public class UserServiceImpl implements IUserService {
         if (rows != 1) {
             throw new DeleteException("删除用户数据时产生了未知的异常");
         }
-        packageService.removePackage(uid);
-        storeService.removeStoreBySid(uid);
+        packageDao.deletePackageByUid(uid);
     }
 
     @Override
@@ -139,6 +141,44 @@ public class UserServiceImpl implements IUserService {
     public List<User> findUserBySearch(String username) {
         username = "%" + username + "%";
         return userDao.findUserBySearch(username);
+    }
+
+    @Override
+    public void modifiedAvatar(String avatar, Long uid) {
+        User user = userDao.findUserByUid(uid);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户不存在");
+        }
+        String path = user.getAvatar();
+        String pathName = path.substring(path.lastIndexOf('/') + 1);
+        user.setModifiedUser(user.getUsername());
+        user.setModifiedTime(new Date());
+        Integer rows = userDao.modifyAvatar(avatar, user);
+        if (rows != 1) {
+            throw new UpdateException("更新用户头像时产生未知异常");
+        }
+        File file = new File("D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\avatar\\" + pathName);
+        file.delete();
+    }
+
+    @Override
+    public void modifiedPass(String oldPass, String newPass, Long uid) {
+        User user = userDao.findUserByUid(uid);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户名不存在");
+        }
+
+        oldPass = getMd5Password(oldPass, user.getCode());
+
+        if (!oldPass.equals(user.getPassword())) {
+            throw new PasswordNotMatchException("密码输入错误");
+        }
+
+        user.setPassword(getMd5Password(newPass, user.getCode()));
+        Integer rows = userDao.updateUserByUid(user, uid);
+        if (rows != 1) {
+            throw new UpdateException("更改用户密码时产生未知错误");
+        }
     }
 
     /**

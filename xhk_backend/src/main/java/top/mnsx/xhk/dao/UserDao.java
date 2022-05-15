@@ -66,4 +66,12 @@ public interface UserDao {
      * @return 返回用户信息
      */
     List<User> findUserBySearch(@Param("username") String username);
+
+    /**
+     * 头像上传
+     * @param avatar 头像地址
+     * @param user 用户
+     * @return
+     */
+    Integer modifyAvatar(@Param("avatar") String avatar, @Param("user") User user);
 }

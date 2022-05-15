@@ -46,4 +46,10 @@ public interface ITicketService{
      * @param username 修改者信息
      */
     void modifiedTicket(Ticket ticket, String username);
+
+    /**
+     * 获取所有的优惠券
+     * @return 返回所有优惠券的集合
+     */
+    List<Ticket> getAllTicket();
 }

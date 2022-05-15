@@ -34,6 +34,15 @@ public class TicketController extends BaseController{
         return response;
     }
 
+    @GetMapping("/get_all")
+    public Map<String, Object> getAll() {
+        List<Ticket> data = ticketService.getAllTicket();
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
+        response.put("data", data);
+        return response;
+    }
+
     @PostMapping("/add_ticket")
     public Map<String, Object> addTicket(@RequestBody String json) {
         Map<String, String> map = JSON.parseObject(json, Map.class);

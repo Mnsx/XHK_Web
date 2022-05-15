@@ -9,6 +9,7 @@ public class ImageUploadConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/img/**").addResourceLocations("file:D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\");
+        registry.addResourceHandler("/img/focus/**").addResourceLocations("file:D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\focus\\");
+        registry.addResourceHandler("/img/avatar/**").addResourceLocations("file:D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\avatar\\");
     }
 }

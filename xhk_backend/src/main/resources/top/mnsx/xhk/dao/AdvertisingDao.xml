@@ -26,5 +26,9 @@
     <select id="findByAid" resultMap="ADEntityMap">
         SELECT * FROM t_advertising WHERE aid = #{aid}
     </select>
+
+    <select id="getAll" resultMap="ADEntityMap">
+        SELECT * FROM t_advertising;
+    </select>
 </mapper>   
  

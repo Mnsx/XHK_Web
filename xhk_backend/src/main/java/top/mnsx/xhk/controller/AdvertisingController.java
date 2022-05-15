@@ -36,6 +36,15 @@ public class AdvertisingController extends BaseController {
     @Autowired
     private IAdvertisingService advertisingService;
 
+    @GetMapping("/get_all")
+    public Map<String, Object> getAll() {
+        List<Advertising> data = advertisingService.getAllAD();
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
+        response.put("data", data);
+        return response;
+    }
+
     @DeleteMapping("/remove_ad/{aid}")
     public Map<String, Object> removeAD(@PathVariable("aid") Long aid) {
         advertisingService.removeAD(aid);
@@ -65,13 +74,13 @@ public class AdvertisingController extends BaseController {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         String uuid = UUID.randomUUID().toString();
         fileName = uuid + suffixName;
-        String photoPath = "D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\";
+        String photoPath = "D:\\WorkSpace\\XHK\\xhk_backend\\src\\main\\resources\\static\\img\\focus\\";
         File file = new File(photoPath);
         if (!file.exists()) {
             file.mkdir();
         }
         String finalPath = photoPath + File.separator + fileName;
-        advertisingService.saveAD("http://localhost:8081/img/" + fileName, "Mnsx_x", fileName);
+        advertisingService.saveAD("http://localhost:8081/img/focus/" + fileName, "Mnsx_x", fileName);
         data.transferTo(new File(finalPath));
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);

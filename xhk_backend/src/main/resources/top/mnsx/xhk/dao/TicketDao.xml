@@ -34,6 +34,10 @@
         SELECT * FROM t_ticket WHERE tid = #{tid}
     </select>
 
+    <select id="getAll" resultMap="TicketEntityMap">
+        SELECT * FROM t_ticket WHERE deleted = 0;
+    </select>
+
     <update id="updateTicket">
         UPDATE t_ticket
         SET

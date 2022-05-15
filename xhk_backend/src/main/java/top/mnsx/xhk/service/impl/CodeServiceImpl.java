@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.mnsx.xhk.dao.CodeDao;
 import top.mnsx.xhk.entity.Code;
+import top.mnsx.xhk.entity.Ticket;
 import top.mnsx.xhk.service.ICodeService;
+import top.mnsx.xhk.service.ex.CodeNotFoundException;
 
 import java.util.List;
 
@@ -36,6 +38,19 @@ public class CodeServiceImpl implements ICodeService {
     @Override
     public void removeCode(Long cid) {
         codeDao.deleteByCid(cid);
+        if (codeDao.getCount() <= 0) {
+            for (int i = 0; i < 100; ++i) {
+                codeDao.insertCode(getCode());
+            }
+        }
+    }
+
+    @Override
+    public void removeCode(String code) {
+        Integer rows = codeDao.deleteByCode(code);
+        if (rows != 1) {
+            throw new CodeNotFoundException("注册码不存在");
+        }
         if (codeDao.getCount() <= 0) {
             for (int i = 0; i < 100; ++i) {
                 codeDao.insertCode(getCode());

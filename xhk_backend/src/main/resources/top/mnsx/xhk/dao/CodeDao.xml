@@ -12,6 +12,10 @@
         DELETE FROM t_code WHERE cid = #{cid}
     </delete>
 
+    <delete id="deleteByCode">
+        DELETE FROM t_code WHERE code = #{code}
+    </delete>
+
     <select id="findAll" resultType="top.mnsx.xhk.entity.Code">
         SELECT * FROM t_code LIMIT ${startPage}, 7
     </select>

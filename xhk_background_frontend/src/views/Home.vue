@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Aside from '../components/Aside'
-import Header from '../components/Header'
+import Aside from '../components/home/Aside'
+import Header from '../components/home/Header'
 export default {
   name: "Home",
   components: {

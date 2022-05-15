@@ -78,4 +78,9 @@ public class TicketServiceImpl implements ITicketService {
             throw new UpdateException("跟新优惠券数据时产生未知错误");
         }
     }
+
+    @Override
+    public List<Ticket> getAllTicket() {
+        return ticketDao.getAll();
+    }
 }

@@ -1,7 +1,6 @@
 package top.mnsx.xhk.service;
 
 import top.mnsx.xhk.entity.Store;
-import top.mnsx.xhk.vo.StoreVO;
 
 import java.util.List;
 
@@ -41,7 +40,7 @@ public interface IStoreService {
      * @param sid 商家id
      * @return 返回对应的商家信息
      */
-    StoreVO findOneBySid(Long sid);
+    Store findOneBySid(Long sid);
 
     /**
      * 根据sid修改商家信息
