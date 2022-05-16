@@ -36,4 +36,11 @@ public interface IPackageService {
      * @param uid 用户id
      */
     void removePackageByUid(Long uid);
+
+    /**
+     * 获取所有的券包数据
+     * @param uid 用户编号
+     * @return 返回卷包数据集合
+     */
+    List<Package> findAllByUser(Long uid);
 }

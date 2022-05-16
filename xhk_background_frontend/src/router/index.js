@@ -19,6 +19,7 @@ import ModifyInfo from "../views/simulation/my/ModifyInfo";
 import ModifyPasswd from "../views/simulation/my/ModifyPasswd";
 import Recharge from "../views/simulation/my/Recharge";
 import ModifyAvatar from "../views/simulation/my/ModifyAvatar";
+import Register from "../views/Register";
 
 Vue.use(Router)
 
@@ -33,6 +34,11 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/home',
@@ -94,7 +100,7 @@ export default new Router({
         {
           path: '/message',
           name: 'Message',
-          component: Message
+          component: Message,
         },
         {
           path: '/my',

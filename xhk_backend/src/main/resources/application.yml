@@ -22,3 +22,11 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
+  # 配置RabbitMQ
+  rabbitmq:
+    host: 192.168.187.130
+    port: 5672
+    username: mnsx
+    password: 123123
+    publisher-confirm-type: correlated
+    publisher-returns: true

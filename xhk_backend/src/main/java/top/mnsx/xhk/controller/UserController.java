@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import top.mnsx.xhk.controller.ex.FileSizeMoreMaxSizeException;
 import top.mnsx.xhk.controller.ex.PhotoNotAcceptException;
+import top.mnsx.xhk.controller.ex.VCodeNotTrueException;
 import top.mnsx.xhk.entity.User;
 import top.mnsx.xhk.service.IUserService;
 import top.mnsx.xhk.utils.JWTUtils;
@@ -93,6 +94,10 @@ public class UserController extends BaseController{
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody String data, HttpSession session) {
         Map<String, String> reqData = JSON.parseObject(data, Map.class);
+        String vcode = redisTemplate.opsForValue().get("date:" + reqData.get("date"));
+        if (!vcode.equals(reqData.get("vcode"))) {
+           throw new VCodeNotTrueException("验证码错误");
+        }
         // 登录逻辑
         User result = userService.login(reqData.get("username"), reqData.get("password"));
         // 生成token
@@ -109,13 +114,13 @@ public class UserController extends BaseController{
         response.put("state", String.valueOf(HttpServletResponse.SC_OK));
         response.put("token", token);
         response.put("uid", String.valueOf(result.getUid()));
+        response.put("role", String.valueOf(result.getRole()));
         response.put("username", String.valueOf(result.getUsername()));
         return response;
     }
 
     @GetMapping("/list_by_search/{curPage}")
     public Map<String, Object> list(@PathVariable("curPage") Integer curPage, String username) {
-        System.out.println(username);
         // 获取数据
         List<User> data = userService.listUser(curPage, username);
         Integer count = userService.getCount(username);
@@ -149,6 +154,15 @@ public class UserController extends BaseController{
         data.transferTo(new File(finalPath));
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);
+        return response;
+    }
+
+    @GetMapping("/get_user_list")
+    public Map<String, Object> getUserList() {
+        List<User> data = userService.getUserList();
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
+        response.put("data", data);
         return response;
     }
 }

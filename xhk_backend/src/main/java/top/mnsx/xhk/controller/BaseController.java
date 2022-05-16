@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import top.mnsx.xhk.controller.ex.FileSizeMoreMaxSizeException;
+import top.mnsx.xhk.controller.ex.VCodeNotTrueException;
 import top.mnsx.xhk.entity.Code;
 import top.mnsx.xhk.service.ex.*;
 
@@ -63,6 +64,9 @@ public class BaseController {
         } else if (e instanceof FileSizeMoreMaxSizeException) {
             result.put("state", "6001");
             result.put("message", "文件大小超过最大限制异常");
+        } else if (e instanceof VCodeNotTrueException) {
+            result.put("state", "6002");
+            result.put("message", "验证码不存在");
         }
 
         return result;

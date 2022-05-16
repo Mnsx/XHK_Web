@@ -24,7 +24,6 @@ public class StoreController extends BaseController{
 
     @GetMapping("/list_by_search/{curPage}")
     public Map<String, Object> listAll(@PathVariable("curPage")Integer curPage, String searchText) {
-        System.out.println(searchText);
         List<Store> data = storeService.listStore(searchText, curPage);
         Integer count = storeService.getCount(searchText);
         Map<String, Object> response = new HashMap<>();

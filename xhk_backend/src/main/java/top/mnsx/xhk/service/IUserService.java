@@ -74,4 +74,10 @@ public interface IUserService {
      * @param newPass 新密码
      */
     void modifiedPass(String oldPass, String newPass, Long uid);
+
+    /**
+     * 获取所有用户列表
+     * @return
+     */
+    List<User> getUserList();
 }

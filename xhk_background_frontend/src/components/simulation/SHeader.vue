@@ -19,7 +19,7 @@
           <el-menu-item index="3" @click="toPage('/info')">我的</el-menu-item>
           <el-submenu index="4">
             <template slot="title">其他</template>
-            <el-menu-item index="2-1" @click="toPage('/home')">后台</el-menu-item>
+            <el-menu-item index="2-1" @click="toPage('/home')" :disabled="disabled">后台</el-menu-item>
             <el-menu-item index="2-2" @click="signout">退出</el-menu-item>
           </el-submenu>
         </el-menu>
@@ -31,6 +31,16 @@
 <script>
 export default {
   name: "SHeader",
+  data() {
+    return {
+      disabled: true,
+    }
+  },
+  created() {
+    if (window.localStorage.getItem("role") === 'root') {
+      this.disabled = false;
+    }
+  },
   methods: {
     toPage(item) {
       this.$router.push(item);

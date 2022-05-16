@@ -17,6 +17,12 @@ public interface PackageDao {
     List<Package> findAll(@Param("startPage") Integer startPage);
 
     /**
+     * 返回指定用户所有券包数据
+     * @return
+     */
+    List<Package> findAllOfUser(@Param("uid") Long uid);
+
+    /**
      * 获取数据库中所有数据的数量
      * @return 返回数据库中所有数据的数量
      */

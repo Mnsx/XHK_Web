@@ -1,5 +1,6 @@
 package top.mnsx.xhk.service.impl;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.mnsx.xhk.dao.PackageDao;
@@ -60,6 +61,15 @@ public class PackageServiceImpl implements IPackageService {
         if (rows != 1) {
             throw new DeleteException("删除用户数据时产生未知异常");
         }
+    }
+
+    @Override
+    public List<Package> findAllByUser(Long uid) {
+        User result = userDao.findUserByUid(uid);
+        if (result == null) {
+            throw new UsernameNotFoundException("用户不存在");
+        }
+        return packageDao.findAllOfUser(uid);
     }
 
 

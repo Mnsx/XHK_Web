@@ -46,8 +46,6 @@ public class CodeController extends BaseController {
         return response;
     }
 
-
-
     @PostMapping("/add_code")
     public Map<String, Object> addCode(String code) {
         codeService.addCode(code);
@@ -66,7 +64,6 @@ public class CodeController extends BaseController {
 
     @DeleteMapping("/delete_by_code/{code}/{uid}")
     public Map<String, Object> deleteByCode(@PathVariable("code") String code, @PathVariable("uid") Long uid) {
-        codeService.removeCode(code);
         User result = userService.findUserByUid(uid);
         if (result == null) {
             throw new UsernameNotFoundException("用户不存在");

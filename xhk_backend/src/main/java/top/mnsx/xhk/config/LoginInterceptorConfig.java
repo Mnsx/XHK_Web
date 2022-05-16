@@ -30,6 +30,9 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
         patterns.add("/login.html");
         patterns.add("/home.html");
         patterns.add("/swagger-ui.html");
+        patterns.add("/qrcode/**");
+        patterns.add("/vcode/**");
+        patterns.add("/users/save_user");
 
         registry.addInterceptor(interceptor)
                 .addPathPatterns("/**")

@@ -24,6 +24,10 @@
         INSERT INTO t_package (uid, tid, created_user, created_time, modified_user, modified_time) VALUES (#{uid}, #{tid}, #{username}, #{now}, #{username}, #{now})
     </insert>
 
+    <select id="findAllOfUser" resultMap="PackageEntityMap">
+        SELECT * FROM t_package WHERE deleted = 0 AND uid = #{uid}
+    </select>
+
     <delete id="deletePackage">
         DELETE FROM t_package WHERE pid = #{pid}
     </delete>

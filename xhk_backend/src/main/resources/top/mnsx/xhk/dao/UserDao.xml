@@ -82,5 +82,9 @@
     <select id="findUserBySearch" resultMap="UserEntityMap">
         SELECT * FROM t_user WHERE username LIKE #{username}
     </select>
+
+    <select id="findUserList" resultMap="UserEntityMap">
+        SELECT * FROM t_user WHERE deleted = 0
+    </select>
 </mapper>
  

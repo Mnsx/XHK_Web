@@ -1,6 +1,9 @@
 package top.mnsx.xhk.controller;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.mnsx.xhk.entity.Package;
@@ -12,9 +15,11 @@ import top.mnsx.xhk.service.IStoreService;
 import top.mnsx.xhk.service.ITicketService;
 import top.mnsx.xhk.service.IUserService;
 import top.mnsx.xhk.service.impl.UserServiceImpl;
+import top.mnsx.xhk.vo.FirstVO;
 import top.mnsx.xhk.vo.PackageVO;
 
 import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +29,8 @@ import java.util.Map;
 @RequestMapping("/packages")
 public class PackageController extends BaseController{
     @Autowired
+    private RabbitTemplate rabbitTemplate;
+    @Autowired
     private IPackageService packageService;
     @Autowired
     private IUserService userService;
@@ -31,6 +38,25 @@ public class PackageController extends BaseController{
     private IStoreService storeService;
     @Autowired
     private ITicketService ticketService;
+
+    @GetMapping("/find_all/{uid}")
+    public Map<String, Object> findAll(@PathVariable("uid") Long uid) {
+        List<Package> packages = packageService.findAllByUser(uid);
+
+        List<FirstVO> data = new ArrayList<>();
+        for (Package a : packages) {
+            Long tid = a.getTid();
+            Ticket ticket = ticketService.getTicketByTid(tid);
+            Long sid = ticket.getSid();
+            Store store = storeService.findOneBySid(sid);
+            data.add(new FirstVO(a.getPid(), ticket, store));
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("state", HttpServletResponse.SC_OK);
+        response.put("data", data);
+        return response;
+    }
 
     @GetMapping("/list_all/{curPage}")
     public Map<String, Object> listAll(@PathVariable("curPage")Integer curPage) {
@@ -69,9 +95,19 @@ public class PackageController extends BaseController{
 
     @DeleteMapping("/remove_package/{pid}")
     public Map<String, Object> removePackage(@PathVariable("pid")Long pid) {
-        packageService.removePackage(pid);
+        if (pid % 2 == 0) {
+            rabbitTemplate.convertAndSend("EA", pid);
+        } else {
+            rabbitTemplate.convertAndSend("EB", pid);
+        }
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);
         return response;
+    }
+
+    @RabbitListener(queues = {"QA", "QB"})
+    public void receiveE(Message message) {
+        String msg = new String(message.getBody(), StandardCharsets.UTF_8);
+        packageService.removePackage(Long.parseLong(msg));
     }
 }

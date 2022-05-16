@@ -181,6 +181,11 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    @Override
+    public List<User> getUserList() {
+        return userDao.findUserList();
+    }
+
     /**
      * 使用Md5进行加密
      * @param password 旧密码

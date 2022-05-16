@@ -74,4 +74,10 @@ public interface UserDao {
      * @return
      */
     Integer modifyAvatar(@Param("avatar") String avatar, @Param("user") User user);
+
+    /**
+     * 获取所有用户名单
+     * @return
+     */
+    List<User> findUserList();
 }
