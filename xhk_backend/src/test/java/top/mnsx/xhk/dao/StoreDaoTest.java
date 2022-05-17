@@ -53,8 +53,8 @@ public class StoreDaoTest {
     public void modifiedStore() {
         Store store = new Store("testmo", "123", "wu");
         store.setSid(11L);
-        Integer row = storeDao.modifiedStore(store, 26L);
-        System.out.println(row);
+//        Integer row = storeDao.modifiedStore(store, 26L);
+//        System.out.println(row);
     }
 
     @Test

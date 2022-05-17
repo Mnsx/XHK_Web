@@ -33,6 +33,7 @@ public class LoginInterceptorConfig implements WebMvcConfigurer {
         patterns.add("/qrcode/**");
         patterns.add("/vcode/**");
         patterns.add("/users/save_user");
+        patterns.add("/packages/remove_package/**");
 
         registry.addInterceptor(interceptor)
                 .addPathPatterns("/**")

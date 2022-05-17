@@ -75,11 +75,11 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public void modifiedStoreBySid(Store store, String username) {
-        User result = userDao.findUserByUsername(username);
+/*        User result = userDao.findUserByUsername(username);
         if (result == null) {
             throw new UsernameNotFoundException("用户不存在");
-        }
-        Integer rows = storeDao.modifiedStore(store, result.getUid());
+        }*/
+        Integer rows = storeDao.modifiedStore(store);
         if (rows != 1) {
             throw new UpdateException("跟新店家信息时产生未知异常");
         }

@@ -60,7 +60,7 @@ public interface StoreDao {
      * @param uid 用户编号
      * @return 返回受影响行数
      */
-    Integer modifiedStore(@Param("store")Store store, @Param("uid")Long uid);
+    Integer modifiedStore(@Param("store")Store store);
 
     Integer deleteStoreByUid(@Param("uid")Long uid);
 }

@@ -96,18 +96,24 @@ public class PackageController extends BaseController{
     @DeleteMapping("/remove_package/{pid}")
     public Map<String, Object> removePackage(@PathVariable("pid")Long pid) {
         if (pid % 2 == 0) {
-            rabbitTemplate.convertAndSend("EA", pid);
+            rabbitTemplate.convertAndSend("E","EA", String.valueOf(pid));
         } else {
-            rabbitTemplate.convertAndSend("EB", pid);
+            rabbitTemplate.convertAndSend("E", "EB", String.valueOf(pid));
         }
         Map<String, Object> response = new HashMap<>();
         response.put("state", HttpServletResponse.SC_OK);
         return response;
     }
 
-    @RabbitListener(queues = {"QA", "QB"})
-    public void receiveE(Message message) {
-        String msg = new String(message.getBody(), StandardCharsets.UTF_8);
+    @RabbitListener(queues = "QA")
+    public void receiveQA(Message message) {
+        String msg = new String(message.getBody());
+        packageService.removePackage(Long.parseLong(msg));
+    }
+
+    @RabbitListener(queues = "QB")
+    public void receiveQB(Message message) {
+        String msg = new String(message.getBody());
         packageService.removePackage(Long.parseLong(msg));
     }
 }

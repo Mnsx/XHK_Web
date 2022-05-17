@@ -63,9 +63,6 @@
         <if test="store.description != null">
             description = #{store.description},
         </if>
-        <if test="uid != null">
-            uid = #{uid},
-        </if>
         <if test="store.deleted != null">
             deleted = #{store.deleted},
         </if>

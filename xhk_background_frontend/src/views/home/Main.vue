@@ -95,6 +95,15 @@ export default {
       }, {
         content: '后台管理系统1.0完成搭建',
         timestamp: '2020-05-03'
+      },{
+        content: '后台管理系统2.0完成搭建',
+        timestamp: '2020-05-04'
+      },{
+        content: '项目前台开始搭建',
+        timestamp: '2020-05-15'
+      },{
+        content: '项目前台1.0完成搭建',
+        timestamp: '2020-05-17'
       }]
     }
   }
